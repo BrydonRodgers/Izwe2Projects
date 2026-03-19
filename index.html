@@ -38,21 +38,7 @@
       "geo": { "@type": "GeoCoordinates", "latitude": -32.9097, "longitude": 17.9947 },
       "areaServed": ["Vredenburg","Saldanha","Langebaan","Velddrif","Hopefield","St Helena Bay","Paternoster","Jacobs Bay"],
       "openingHours": "Mo-Fr 07:00-17:00",
-      "priceRange": "$$",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Construction Services",
-        "itemListElement": [
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Building & New Construction"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tiling"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Carpentry"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Floor Screeding"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Decking"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Painting"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Waterproofing"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Renovations"}}
-        ]
-      }
+      "priceRange": "$$"
     }
     </script>
 
@@ -93,6 +79,10 @@
         ::-webkit-scrollbar-track { background: var(--ink); }
         ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
         html { scroll-behavior: smooth; }
+
+        /* FIX: scroll-margin-top for fixed nav on all anchor targets */
+        [id] { scroll-margin-top: 80px; }
+
         body { background: var(--black); color: var(--body); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
         /* SA BAR */
@@ -105,17 +95,18 @@
         nav { position: fixed; top: 3px; left: 0; right: 0; z-index: 100; height: 68px; display: flex; align-items: center; background: rgba(10,10,9,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 48px; gap: 32px; transition: border-color 0.3s; }
         nav.scrolled { border-bottom-color: rgba(196,30,42,0.3); }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-        .logo-mark { width: 38px; height: 38px; background: var(--red); display: flex; align-items: center; justify-content: center; clip-path: polygon(0 0,100% 0,100% 75%,50% 100%,0 75%); }
-        .logo-mark svg { width: 20px; height: 20px; }
+        .logo-mark { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
         .logo-text strong { display: block; font-family: var(--font-head); font-size: 19px; letter-spacing: 0.06em; color: var(--white); }
         .logo-text span { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); }
         .nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; list-style: none; }
         .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--body); text-decoration: none; transition: color 0.2s; }
         .nav-links a:hover { color: var(--white); }
+        /* FIX: active nav indicator for index.html */
+        .nav-links a.active { color: var(--white); }
         .nav-cta { background: var(--red) !important; color: var(--white) !important; padding: 9px 22px; border-radius: var(--r); font-weight: 600 !important; }
         .nav-cta:hover { background: var(--red2) !important; }
         .nav-mob-btn { display: none; background: none; border: none; color: var(--white); cursor: pointer; margin-left: auto; padding: 4px; }
-        .mob-menu { display: none; position: fixed; inset: 0; z-index: 300; background: var(--ink); flex-direction: column; padding: 28px 32px; }
+        .mob-menu { display: none; position: fixed; inset: 0; z-index: 300; background: var(--ink); flex-direction: column; padding: 28px 32px; overflow-y: auto; }
         .mob-menu.open { display: flex; }
         .mob-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
         .mob-close { background: none; border: none; color: var(--white); font-size: 30px; cursor: pointer; line-height: 1; }
@@ -124,23 +115,31 @@
 
         /* HERO */
         #home { position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; }
-        .hero-video-wrap { position: absolute; inset: 0; z-index: 0; }
+        .hero-video-wrap { position: absolute; inset: 0; z-index: 0; background: var(--ink); }
         .hero-video-wrap video { width: 100%; height: 100%; object-fit: cover; }
+        /* FIX: poster fallback background for missing video */
+        .hero-video-wrap::before {
+            content: '';
+            position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(135deg, #1a1a17 0%, #0f1a10 50%, #141412 100%);
+        }
+        .hero-video-wrap video { position: relative; z-index: 2; }
         .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(135deg,rgba(10,10,9,0.94) 0%,rgba(10,10,9,0.65) 50%,rgba(10,10,9,0.3) 100%); }
         .hero-overlay::after { content:''; position: absolute; top:0; left:0; width:4px; height:100%; background: linear-gradient(to bottom,var(--red),var(--green),transparent); }
-        .hero-content { position: relative; z-index: 2; padding: 0 72px 96px; max-width: 860px; }
+        .hero-content { position: relative; z-index: 2; padding: 0 72px 80px; max-width: 860px; }
         .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--redf); margin-bottom: 24px; }
         .hero-eyebrow::before { content:''; width: 28px; height: 2px; background: var(--redf); }
         .hero-title { font-family: var(--font-head); font-size: clamp(52px,8.5vw,122px); line-height: 0.9; letter-spacing: 0.01em; color: var(--white); text-transform: uppercase; margin-bottom: 12px; }
         .hero-title .accent { color: var(--redf); }
         .hero-title .stroke { -webkit-text-stroke: 1px var(--white); color: transparent; }
         .hero-desc { font-size: 17px; line-height: 1.75; color: var(--light); max-width: 480px; margin-bottom: 44px; margin-top: 20px; font-weight: 300; }
-        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 72px; }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
         .btn-red { display: inline-flex; align-items: center; gap: 10px; background: var(--red); color: var(--white); padding: 15px 34px; border-radius: var(--r); font-family: var(--font-head); font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
         .btn-red:hover { background: var(--redf); transform: translateY(-2px); }
         .btn-ghost { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: var(--white); padding: 15px 34px; border-radius: var(--r); font-family: var(--font-head); font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.25); cursor: pointer; transition: border-color 0.2s; }
         .btn-ghost:hover { border-color: var(--white); }
-        .hero-stats { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; }
+        /* FIX: hero-stats responsive - wrap and reduce font on small screens */
+        .hero-stats { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px; flex-wrap: wrap; }
         .hstat { padding-right: 36px; }
         .hstat + .hstat { padding-left: 36px; border-left: 1px solid rgba(255,255,255,0.1); }
         .hstat-num { font-family: var(--font-head); font-size: 46px; line-height: 1; color: var(--redf); }
@@ -156,7 +155,7 @@
         .tick-sep { display: inline-block; width: 5px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 50%; }
 
         /* SECTIONS */
-        section { padding: 100px 0; }
+        section { padding: 90px 0; }
         .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
         .sec-label { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--redf); margin-bottom: 16px; }
         .sec-label::before { content:''; width: 20px; height: 2px; background: var(--redf); flex-shrink: 0; }
@@ -167,10 +166,11 @@
         /* ABOUT */
         #about { background: var(--ink); }
         .about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
-        .about-img-stack { position: relative; padding-bottom: 48px; }
+        .about-img-stack { position: relative; padding-bottom: 48px; overflow: hidden; }
         .about-img-main { width: 100%; height: 520px; object-fit: cover; border-radius: var(--r2); display: block; }
-        .about-img-accent { position: absolute; bottom: 0; right: -24px; width: 52%; height: 200px; object-fit: cover; border-radius: var(--r2); border: 3px solid var(--ink); }
-        .about-badge { position: absolute; top: 24px; left: -20px; background: var(--red); color: var(--white); padding: 18px 20px; border-radius: var(--r2); text-align: center; z-index: 2; }
+        /* FIX: clip accent image so it doesn't overflow container */
+        .about-img-accent { position: absolute; bottom: 0; right: 0; width: 52%; height: 200px; object-fit: cover; border-radius: var(--r2); border: 3px solid var(--ink); }
+        .about-badge { position: absolute; top: 24px; left: 0; background: var(--red); color: var(--white); padding: 18px 20px; border-radius: var(--r2); text-align: center; z-index: 2; }
         .about-badge strong { display: block; font-family: var(--font-head); font-size: 38px; line-height: 1; }
         .about-badge span { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
         .about-text p { font-size: 15px; line-height: 1.85; margin-bottom: 18px; }
@@ -181,6 +181,19 @@
         .pillar-ico svg { width: 17px; height: 17px; }
         .pillar h4 { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
         .pillar p { font-size: 12px; line-height: 1.5; margin: 0; }
+
+        /* FIX: img onerror placeholder styles */
+        .img-placeholder {
+            width: 100%; height: 100%;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 12px; color: var(--muted);
+        }
+        .img-placeholder svg { width: 32px; height: 32px; opacity: 0.4; }
+        .img-placeholder span { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; }
 
         /* SERVICES */
         #services { background: var(--black); }
@@ -204,17 +217,22 @@
         .f-btn { padding: 7px 16px; background: transparent; border: 1px solid var(--border); border-radius: 2px; font-family: var(--font-body); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--body); cursor: pointer; transition: all 0.2s; }
         .f-btn:hover, .f-btn.active { background: var(--red); border-color: var(--red); color: var(--white); }
         .proj-grid { display: grid; grid-template-columns: repeat(3,1fr); grid-auto-rows: 280px; gap: 16px; }
-        .proj-card { position: relative; overflow: hidden; border-radius: var(--r2); cursor: pointer; }
+        .proj-card { position: relative; overflow: hidden; border-radius: var(--r2); cursor: pointer; background: var(--card); }
         .proj-card.tall { grid-row: span 2; }
         .proj-card.wide { grid-column: span 2; }
         .proj-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: grayscale(15%) brightness(0.85); }
         .proj-card:hover img { transform: scale(1.06); }
+        /* FIX: placeholder for project cards with missing images */
+        .proj-img-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--card) 0%, #1e1e1a 100%); display: flex; align-items: center; justify-content: center; color: var(--muted); }
+        .proj-img-placeholder svg { width: 36px; height: 36px; opacity: 0.3; }
         .proj-ov { position: absolute; inset: 0; background: linear-gradient(to top,rgba(10,10,9,0.94) 0%,rgba(10,10,9,0.15) 60%,transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; }
         .proj-tag { display: inline-block; padding: 3px 10px; background: var(--red); color: var(--white); font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 2px; margin-bottom: 8px; width: fit-content; }
         .proj-name { font-family: var(--font-head); font-size: 20px; color: var(--white); text-transform: uppercase; letter-spacing: 0.03em; }
         .proj-loc { font-size: 12px; color: var(--body); margin-top: 2px; }
         .proj-card.hidden { display: none; }
+        /* FIX: centre the load-more button properly */
         .load-more-wrap { text-align: center; margin-top: 32px; }
+        .load-more-wrap .btn-ghost { margin: 0 auto; }
 
         /* AREAS */
         #areas { background: var(--black); }
@@ -312,18 +330,37 @@
         }
         @media (max-width: 860px) {
             nav { padding: 0 20px; } .nav-links { display: none; } .nav-mob-btn { display: flex; }
-            .hero-content { padding: 0 24px 80px; } .hero-title { font-size: 52px; }
-            .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-img-stack { display: none; }
-            .services-hd { grid-template-columns: 1fr; gap: 20px; } .svc-grid { grid-template-columns: 1fr; }
+            .hero-content { padding: 0 24px 72px; }
+            .hero-title { font-size: 52px; }
+            /* FIX: hero stats on mobile */
+            .hero-stats { gap: 16px; }
+            .hstat { padding: 0 !important; border-left: none !important; }
+            .hstat-num { font-size: 36px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            /* FIX: show about image stack on mobile as a simpler single image */
+            .about-img-stack { padding-bottom: 0; }
+            .about-img-accent { display: none; }
+            .about-img-main { height: 280px; }
+            .about-badge { top: 16px; left: 16px; }
+            .services-hd { grid-template-columns: 1fr; gap: 20px; }
+            .svc-grid { grid-template-columns: 1fr; }
             .proj-hd { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .proj-grid { grid-template-columns: 1fr; grid-auto-rows: 260px; } .proj-card.tall { grid-row: span 1; }
-            .areas-intro { grid-template-columns: 1fr; gap: 24px; } .areas-grid { grid-template-columns: 1fr; }
+            .proj-grid { grid-template-columns: 1fr; grid-auto-rows: 260px; }
+            .proj-card.tall { grid-row: span 1; }
+            .areas-intro { grid-template-columns: 1fr; gap: 24px; }
+            .areas-grid { grid-template-columns: 1fr; }
             .testi-grid { grid-template-columns: 1fr; }
             .quote-grid { grid-template-columns: 1fr; gap: 48px; }
             .foot-grid { grid-template-columns: 1fr; gap: 28px; }
-            .form-row { grid-template-columns: 1fr; } .pillars { grid-template-columns: 1fr; }
-            .container { padding: 0 20px; } section { padding: 72px 0; }
+            /* FIX: form-row responsive on index too */
+            .form-row { grid-template-columns: 1fr; }
+            .pillars { grid-template-columns: 1fr; }
+            .container { padding: 0 20px; }
+            section { padding: 64px 0; }
             .cta-phones { flex-direction: column; align-items: center; }
+        }
+        @media (max-width: 560px) {
+            .form-card { padding: 24px; }
         }
     </style>
 </head>
@@ -336,9 +373,11 @@
 
 <!-- NAV -->
 <nav id="mainNav">
-    <a href="#home" class="logo">
-        <div class="logo-mark" style="background:none;clip-path:none;">
-            <img src="logo.png" alt="Izwe 2 Projects Logo" style="width:38px;height:38px;object-fit:contain;">
+    <a href="index.html" class="logo">
+        <div class="logo-mark">
+            <!-- FIX: onerror fallback for logo -->
+            <img src="logo.png" alt="Izwe 2 Projects Logo" style="width:38px;height:38px;object-fit:contain;"
+                 onerror="this.style.display='none';this.parentElement.innerHTML='<svg width=&quot;20&quot; height=&quot;20&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;white&quot;><path d=&quot;M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z&quot;/></svg>';this.parentElement.style.background='var(--red)';this.parentElement.style.clipPath='polygon(0 0,100% 0,100% 75%,50% 100%,0 75%)';">
         </div>
         <div class="logo-text">
             <strong>Izwe 2 Projects</strong>
@@ -346,7 +385,8 @@
         </div>
     </a>
     <ul class="nav-links">
-        <li><a href="#about">About</a></li>
+        <!-- FIX: active state on home page -->
+        <li><a href="#about" class="active">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#areas">Areas</a></li>
@@ -375,9 +415,9 @@
 </div>
 
 <!-- HERO -->
-<section id="home">
+<section id="home" style="scroll-margin-top:0;">
     <div class="hero-video-wrap">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline poster="pic1.jpg">
             <source src="views.mp4" type="video/mp4">
         </video>
     </div>
@@ -386,7 +426,7 @@
         <div class="hero-eyebrow">Vredenburg &amp; West Coast Construction</div>
         <h1 class="hero-title">
             West Coast<br>
-            <span class="accent">Building &</span><br>
+            <span class="accent">Building &amp;</span><br>
             <span class="stroke">Construction.</span>
         </h1>
         <p class="hero-desc">Izwe 2 Projects delivers quality general and civil construction across the West Coast of South Africa — from solid foundations to finished walls, we do the work right.</p>
@@ -406,7 +446,7 @@
     <div class="hero-flag-strip"></div>
 </section>
 
-<!-- TICKER — matches business card services exactly -->
+<!-- TICKER -->
 <div class="process-bar">
     <div class="process-track">
         <span class="tick-item">Building <span class="tick-sep"></span></span>
@@ -439,8 +479,11 @@
     <div class="container">
         <div class="about-grid">
             <div class="about-img-stack fu">
-                <img class="about-img-main" src="pic1.jpg" alt="Izwe 2 Projects construction West Coast">
-                <img class="about-img-accent" src="pic2.jpg" alt="Izwe 2 Projects finished work">
+                <!-- FIX: onerror fallback for both about images -->
+                <img class="about-img-main" src="pic1.jpg" alt="Izwe 2 Projects construction West Coast"
+                     onerror="this.outerHTML='<div class=\'about-img-main\' style=\'background:var(--card);border:1px solid var(--border);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--muted);\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><path d=\'M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z\'/></svg><span style=\'font-size:11px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;\'>Project Photo</span></div>'">
+                <img class="about-img-accent" src="pic2.jpg" alt="Izwe 2 Projects finished work"
+                     onerror="this.style.display='none'">
                 <div class="about-badge"><strong>10+</strong><span>Years Built</span></div>
             </div>
             <div class="about-text">
@@ -471,7 +514,7 @@
     </div>
 </section>
 
-<!-- SERVICES — all 7 from business card + renovations -->
+<!-- SERVICES -->
 <section id="services">
     <div class="container">
         <div class="services-hd">
@@ -482,7 +525,6 @@
             <p class="sec-sub">From new builds to finishing work — all services available across the West Coast. <a href="services.html" style="color:var(--redf);text-decoration:none;font-weight:600;">Full details &rarr;</a></p>
         </div>
         <div class="svc-grid">
-            <!-- 01 Building -->
             <div class="svc-card fu">
                 <div class="svc-num">01</div>
                 <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
@@ -490,7 +532,6 @@
                 <p>Complete residential and commercial builds from foundation to finish. Full project management included.</p>
                 <a href="services.html#building" class="svc-link">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
-            <!-- 02 Carpentry -->
             <div class="svc-card fu d1">
                 <div class="svc-num">02</div>
                 <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
@@ -498,7 +539,6 @@
                 <p>Doors, frames, ceilings, built-in units and all structural timber work done with precision.</p>
                 <a href="services.html#carpentry" class="svc-link">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
-            <!-- 03 Floor Screeding -->
             <div class="svc-card fu d2">
                 <div class="svc-num">03</div>
                 <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
@@ -506,7 +546,6 @@
                 <p>Smooth, level floor screeds ready for tiling, epoxy, or any surface finish.</p>
                 <a href="services.html#screeding" class="svc-link">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
-            <!-- 04 Decking -->
             <div class="svc-card fu">
                 <div class="svc-num">04</div>
                 <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
@@ -514,7 +553,6 @@
                 <p>Timber and composite decking for outdoor entertainment areas and patios.</p>
                 <a href="services.html#decking" class="svc-link">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
-            <!-- 05 Painting -->
             <div class="svc-card fu d1">
                 <div class="svc-num">05</div>
                 <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div>
@@ -522,7 +560,6 @@
                 <p>Interior and exterior painting — walls, ceilings, and plaster finishes done to a professional standard.</p>
                 <a href="services.html#painting" class="svc-link">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
-            <!-- 06 Waterproofing -->
             <div class="svc-card fu d2">
                 <div class="svc-num">06</div>
                 <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
@@ -530,7 +567,6 @@
                 <p>Roof, bathroom and structural waterproofing built for the coastal West Coast climate.</p>
                 <a href="services.html#waterproofing" class="svc-link">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
-            <!-- 07 Tiling -->
             <div class="svc-card fu">
                 <div class="svc-num">07</div>
                 <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="9" height="9"/><rect x="13" y="3" width="9" height="9"/><rect x="2" y="13" width="9" height="9"/><rect x="13" y="13" width="9" height="9"/></svg></div>
@@ -538,7 +574,6 @@
                 <p>Floor and wall tiling — showers, kitchens, patios and more. Clean, precise, and built to last.</p>
                 <a href="services.html#tiling" class="svc-link">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
-            <!-- 08 Renovations -->
             <div class="svc-card fu d1">
                 <div class="svc-num">08</div>
                 <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div>
@@ -550,7 +585,7 @@
     </div>
 </section>
 
-<!-- PROJECTS — pic1 through pic10 all included -->
+<!-- PROJECTS -->
 <section id="projects">
     <div class="container">
         <div class="proj-hd">
@@ -566,54 +601,51 @@
             </div>
         </div>
         <div class="proj-grid" id="projGrid">
-
-            <!-- VISIBLE BY DEFAULT (6 cards) -->
+            <!-- VISIBLE BY DEFAULT -->
             <div class="proj-card tall fu" data-cat="residential">
-                <img src="pic1.jpg" alt="Izwe 2 Projects construction West Coast">
+                <img src="pic1.jpg" alt="Izwe 2 Projects construction West Coast" onerror="this.style.display='none'">
                 <div class="proj-ov"><span class="proj-tag">Residential</span><div class="proj-name">Residential Build</div><div class="proj-loc">Residential &middot; West Coast</div></div>
             </div>
             <div class="proj-card fu d1" data-cat="finishing">
-                <img src="pic2.jpg" alt="Izwe 2 Projects finishing work">
+                <img src="pic2.jpg" alt="Izwe 2 Projects finishing work" onerror="this.style.display='none'">
                 <div class="proj-ov"><span class="proj-tag">Finishing</span><div class="proj-name">Interior Finishing</div><div class="proj-loc">Renovation &middot; West Coast</div></div>
             </div>
             <div class="proj-card fu d2" data-cat="finishing">
-                <img src="pic3.jpg" alt="Izwe 2 Projects tiling and painting">
+                <img src="pic3.jpg" alt="Izwe 2 Projects tiling and painting" onerror="this.style.display='none'">
                 <div class="proj-ov"><span class="proj-tag">Tiling</span><div class="proj-name">Tiling &amp; Plastering</div><div class="proj-loc">New Build &middot; Vredenburg</div></div>
             </div>
             <div class="proj-card fu d1" data-cat="residential">
-                <img src="pic4.jpg" alt="Izwe 2 Projects residential project">
+                <img src="pic4.jpg" alt="Izwe 2 Projects residential project" onerror="this.style.display='none'">
                 <div class="proj-ov"><span class="proj-tag">Residential</span><div class="proj-name">Residential Project</div><div class="proj-loc">Residential &middot; West Coast</div></div>
             </div>
             <div class="proj-card fu d2" data-cat="commercial">
-                <img src="pic5.jpg" alt="Izwe 2 Projects commercial build">
+                <img src="pic5.jpg" alt="Izwe 2 Projects commercial build" onerror="this.style.display='none'">
                 <div class="proj-ov"><span class="proj-tag">Commercial</span><div class="proj-name">Commercial Build</div><div class="proj-loc">Commercial &middot; West Coast</div></div>
             </div>
             <div class="proj-card fu d1" data-cat="commercial">
-                <img src="pic6.jpg" alt="Izwe 2 Projects industrial construction">
+                <img src="pic6.jpg" alt="Izwe 2 Projects industrial construction" onerror="this.style.display='none'">
                 <div class="proj-ov"><span class="proj-tag">Industrial</span><div class="proj-name">Industrial Project</div><div class="proj-loc">Commercial &middot; West Coast</div></div>
             </div>
-
             <!-- HIDDEN — revealed on Load More -->
             <div class="proj-card fu hidden" data-cat="residential">
-                <img src="pic7.jpg" alt="Izwe 2 Projects build West Coast">
+                <img src="pic7.jpg" alt="Izwe 2 Projects build West Coast" onerror="this.style.display='none'">
                 <div class="proj-ov"><span class="proj-tag">Residential</span><div class="proj-name">Residential Build</div><div class="proj-loc">Residential &middot; West Coast</div></div>
             </div>
             <div class="proj-card fu hidden" data-cat="finishing">
-                <img src="pic8.jpg" alt="Izwe 2 Projects finishing work">
+                <img src="pic8.jpg" alt="Izwe 2 Projects finishing work" onerror="this.style.display='none'">
                 <div class="proj-ov"><span class="proj-tag">Finishing</span><div class="proj-name">Finishing Work</div><div class="proj-loc">Renovation &middot; West Coast</div></div>
             </div>
             <div class="proj-card fu hidden" data-cat="residential">
-                <img src="pic9.jpg" alt="Izwe 2 Projects home build">
+                <img src="pic9.jpg" alt="Izwe 2 Projects home build" onerror="this.style.display='none'">
                 <div class="proj-ov"><span class="proj-tag">Residential</span><div class="proj-name">Home Build</div><div class="proj-loc">Residential &middot; West Coast</div></div>
             </div>
             <div class="proj-card fu hidden" data-cat="commercial">
-                <img src="pic10.jpg" alt="Izwe 2 Projects commercial construction">
+                <img src="pic10.jpg" alt="Izwe 2 Projects commercial construction" onerror="this.style.display='none'">
                 <div class="proj-ov"><span class="proj-tag">Commercial</span><div class="proj-name">Commercial Project</div><div class="proj-loc">Commercial &middot; West Coast</div></div>
             </div>
-
         </div>
         <div class="load-more-wrap">
-            <button class="btn-ghost" id="loadMoreBtn" onclick="loadMoreProjects()" style="margin:0 auto;">Load More Projects</button>
+            <button class="btn-ghost" id="loadMoreBtn" onclick="loadMoreProjects()">Load More Projects</button>
         </div>
     </div>
 </section>
@@ -727,7 +759,7 @@
                 </div>
                 <div class="crow">
                     <div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                    <div><div class="clabel">Email</div><div class="cvalue"><a href="/cdn-cgi/l/email-protection#b6d7d1d1c3c5c2dfd8d38e848ef6d1dbd7dfda98d5d9db"><span class="__cf_email__" data-cfemail="b5d4d2d2c0c6c1dcdbd08d878df5d2d8d4dcd99bd6dad8">[email&#160;protected]</span></a></div></div>
+                    <div><div class="clabel">Email</div><div class="cvalue"><a href="mailto:aggustine828@gmail.com">aggustine828@gmail.com</a></div></div>
                 </div>
                 <div class="crow">
                     <div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -777,8 +809,8 @@
     <div class="container">
         <div class="foot-grid">
             <div class="foot-brand">
-                <a href="#home" class="logo">
-                    <div class="logo-mark" style="background:none;clip-path:none;"><img src="logo.png" alt="Izwe 2 Projects Logo" style="width:38px;height:38px;object-fit:contain;"></div>
+                <a href="index.html" class="logo">
+                    <div class="logo-mark"><img src="logo.png" alt="Logo" style="width:38px;height:38px;object-fit:contain;" onerror="this.style.display='none'"></div>
                     <div class="logo-text"><strong>Izwe 2 Projects</strong><span>General and Civil Works &middot; West Coast</span></div>
                 </a>
                 <p>Locally operated general and civil construction company serving the West Coast of South Africa. Built on trust. Built to last.</p>
@@ -825,7 +857,7 @@
                     <p style="font-size:13.5px;line-height:1.9;color:var(--body);">
                         <a href="tel:+27766714106" style="color:var(--body);text-decoration:none;">076 671 4106</a><br>
                         <a href="tel:+27748847688" style="color:var(--body);text-decoration:none;">074 884 7688</a><br>
-                        <a href="/cdn-cgi/l/email-protection#9efff9f9ebedeaf7f0fba6aca6def9f3fff7f2b0fdf1f3" style="color:var(--body);text-decoration:none;"><span class="__cf_email__" data-cfemail="e28385859791968b8c87dad0daa2858f838b8ecc818d8f">[email&#160;protected]</span></a><br>
+                        <a href="mailto:aggustine828@gmail.com" style="color:var(--body);text-decoration:none;">aggustine828@gmail.com</a><br>
                         Vredenburg, West Coast
                     </p>
                 </div>
@@ -843,7 +875,7 @@
     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     // Nav scroll effect
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
@@ -859,12 +891,11 @@
     }, { threshold: 0.12 });
     fus.forEach(el => obs.observe(el));
 
-    // Project filter
+    // Project filter — FIX: also handle cards hidden by Load More separately
     function filterProj(btn, cat) {
         document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        document.querySelectorAll('.proj-card').forEach(card => {
-            if (card.classList.contains('hidden')) return;
+        document.querySelectorAll('.proj-card:not(.hidden)').forEach(card => {
             card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
         });
     }
@@ -872,10 +903,11 @@
     // Load more projects
     function loadMoreProjects() {
         const hidden = document.querySelectorAll('.proj-card.hidden');
-        hidden.forEach(card => card.classList.remove('hidden'));
+        hidden.forEach(card => {
+            card.classList.remove('hidden');
+            obs.observe(card);
+        });
         document.getElementById('loadMoreBtn').style.display = 'none';
-        // Re-observe newly visible cards for animation
-        document.querySelectorAll('.proj-card.fu:not(.in)').forEach(el => obs.observe(el));
     }
 
     // WhatsApp form submit
@@ -892,4 +924,15 @@
             return;
         }
 
-        let msg = `Hi Izwe 2 Projects! I'd like a
+        let msg = `Hi Izwe 2 Projects! I'd like a free quote.\n\n`;
+        msg += `*Name:* ${fname} ${lname}\n`;
+        msg += `*Phone:* ${phone}\n`;
+        if (service) msg += `*Service:* ${service}\n`;
+        if (area)    msg += `*Area:* ${area}\n`;
+        if (details) msg += `*Details:* ${details}\n`;
+
+        window.open(`https://wa.me/27766714106?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+</script>
+</body>
+</html>
