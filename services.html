@@ -39,7 +39,6 @@
             --redf:   #e02535;
             --red-l:  rgba(196,30,42,0.12);
             --red-b:  rgba(196,30,42,0.28);
-            --green:  #2d6a3f;
             --font-head: 'Anton', sans-serif;
             --font-body: 'DM Sans', sans-serif;
             --r:  3px;
@@ -50,6 +49,10 @@
         ::-webkit-scrollbar-track { background: var(--ink); }
         ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
         html { scroll-behavior: smooth; }
+
+        /* FIX: scroll offset for fixed nav */
+        [id] { scroll-margin-top: 80px; }
+
         body { background: var(--black); color: var(--body); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
         /* SA BAR */
@@ -62,8 +65,7 @@
         nav { position: fixed; top: 3px; left: 0; right: 0; z-index: 100; height: 68px; display: flex; align-items: center; background: rgba(10,10,9,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 48px; gap: 32px; transition: border-color 0.3s; }
         nav.scrolled { border-bottom-color: rgba(196,30,42,0.3); }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-        .logo-mark { width: 38px; height: 38px; background: var(--red); display: flex; align-items: center; justify-content: center; clip-path: polygon(0 0,100% 0,100% 75%,50% 100%,0 75%); }
-        .logo-mark svg { width: 20px; height: 20px; }
+        .logo-mark { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
         .logo-text strong { display: block; font-family: var(--font-head); font-size: 19px; letter-spacing: 0.06em; color: var(--white); }
         .logo-text span { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); }
         .nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; list-style: none; }
@@ -72,7 +74,7 @@
         .nav-cta { background: var(--red) !important; color: var(--white) !important; padding: 9px 22px; border-radius: var(--r); font-weight: 600 !important; }
         .nav-cta:hover { background: var(--red2) !important; }
         .nav-mob-btn { display: none; background: none; border: none; color: var(--white); cursor: pointer; margin-left: auto; padding: 4px; }
-        .mob-menu { display: none; position: fixed; inset: 0; z-index: 300; background: var(--ink); flex-direction: column; padding: 28px 32px; }
+        .mob-menu { display: none; position: fixed; inset: 0; z-index: 300; background: var(--ink); flex-direction: column; padding: 28px 32px; overflow-y: auto; }
         .mob-menu.open { display: flex; }
         .mob-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
         .mob-close { background: none; border: none; color: var(--white); font-size: 30px; cursor: pointer; line-height: 1; }
@@ -80,7 +82,7 @@
         .mob-menu a:hover { color: var(--redf); }
 
         /* PAGE HERO */
-        .page-hero { padding: 140px 0 80px; background: var(--ink); position: relative; overflow: hidden; }
+        .page-hero { padding: 140px 0 72px; background: var(--ink); position: relative; overflow: hidden; }
         .page-hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(196,30,42,0.08) 0%, transparent 70%); pointer-events: none; }
         .page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, var(--red), transparent 60%); }
         .ph-label { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--redf); margin-bottom: 16px; }
@@ -96,11 +98,10 @@
         .ph-nav a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 2px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--body); text-decoration: none; transition: all 0.2s; white-space: nowrap; }
         .ph-nav a:hover { background: var(--red); border-color: var(--red); color: var(--white); }
 
-        /* CONTAINER */
         .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
 
         /* SERVICE SECTIONS */
-        .svc-section { padding: 96px 0; border-bottom: 1px solid var(--border); }
+        .svc-section { padding: 88px 0; border-bottom: 1px solid var(--border); }
         .svc-section:nth-child(even) { background: var(--ink); }
         .svc-section:nth-child(odd) { background: var(--black); }
         .svc-section:last-child { border-bottom: none; }
@@ -109,7 +110,6 @@
         .svc-section:nth-child(even) .svc-inner { direction: rtl; }
         .svc-section:nth-child(even) .svc-inner > * { direction: ltr; }
 
-        .svc-info {}
         .svc-num-big { font-family: var(--font-head); font-size: 120px; line-height: 1; color: rgba(196,30,42,0.07); letter-spacing: -0.02em; margin-bottom: -20px; }
         .svc-label { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--redf); margin-bottom: 12px; }
         .svc-label::before { content:''; width: 20px; height: 2px; background: var(--redf); flex-shrink: 0; }
@@ -119,7 +119,7 @@
 
         .included-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
         .included-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; color: var(--light); }
-        .included-list li::before { content: ''; width: 18px; height: 18px; flex-shrink: 0; background: var(--red-l); border: 1px solid var(--red-b); border-radius: 2px; display: flex; align-items: center; justify-content: center; margin-top: 2px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23e02535' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
+        .included-list li::before { content: ''; width: 18px; height: 18px; flex-shrink: 0; background: var(--red-l); border: 1px solid var(--red-b); border-radius: 2px; margin-top: 2px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23e02535' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
 
         .wa-btn { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; padding: 14px 28px; border-radius: var(--r); font-family: var(--font-head); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.15s; }
         .wa-btn:hover { background: #1ebe5d; transform: translateY(-2px); }
@@ -132,10 +132,74 @@
         .svc-img-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,30,42,0.18) 0%, transparent 60%); pointer-events: none; }
         .svc-img-tag { position: absolute; bottom: 20px; left: 20px; background: var(--red); color: var(--white); padding: 6px 14px; border-radius: 2px; font-family: var(--font-head); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
 
-        .svc-placeholder { width: 100%; height: 440px; background: var(--card); border: 1px solid var(--border); border-radius: var(--r2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
-        .svc-placeholder-ico { width: 80px; height: 80px; background: var(--red-l); border: 1px solid var(--red-b); border-radius: var(--r2); display: flex; align-items: center; justify-content: center; color: var(--redf); }
-        .svc-placeholder-ico svg { width: 36px; height: 36px; }
-        .svc-placeholder p { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+        /* FIX: Redesigned placeholder — compact, branded, not a 440px void */
+        .svc-placeholder {
+            width: 100%;
+            height: 440px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Red diagonal accent line behind placeholder */
+        .svc-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(196,30,42,0.08) 0%, transparent 70%);
+        }
+        .svc-placeholder::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--red), transparent);
+        }
+        .svc-ph-icon {
+            width: 72px; height: 72px;
+            background: var(--red-l);
+            border: 1px solid var(--red-b);
+            border-radius: var(--r2);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--redf);
+            margin-bottom: 20px;
+        }
+        .svc-ph-icon svg { width: 32px; height: 32px; }
+        .svc-ph-title {
+            font-family: var(--font-head);
+            font-size: 22px;
+            color: var(--white);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .svc-ph-sub {
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+        .svc-ph-wa {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 20px;
+            background: rgba(37,211,102,0.1);
+            border: 1px solid rgba(37,211,102,0.25);
+            border-radius: var(--r);
+            font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+            color: #4cce7e;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .svc-ph-wa:hover { background: rgba(37,211,102,0.18); }
+        .svc-ph-wa svg { width: 14px; height: 14px; }
 
         /* TRUST STRIP */
         .trust-strip { background: var(--red); padding: 56px 0; }
@@ -146,7 +210,7 @@
         .trust-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 4px; }
 
         /* CTA BAND */
-        .cta-band { background: var(--ink); padding: 96px 0; border-top: 1px solid var(--border); }
+        .cta-band { background: var(--ink); padding: 88px 0; border-top: 1px solid var(--border); }
         .cta-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .cta-text .sec-label { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--redf); margin-bottom: 16px; }
         .cta-text .sec-label::before { content:''; width: 20px; height: 2px; background: var(--redf); flex-shrink: 0; }
@@ -191,20 +255,22 @@
 
         /* RESPONSIVE */
         @media (max-width: 1100px) {
-            .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); }
             .trust-item:nth-child(3) { border-left: none; border-top: 1px solid rgba(255,255,255,0.2); }
             .trust-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.2); }
             .trust-item { padding: 20px; }
         }
         @media (max-width: 860px) {
             nav { padding: 0 20px; } .nav-links { display: none; } .nav-mob-btn { display: flex; }
-            .svc-inner { grid-template-columns: 1fr; gap: 40px; }
+            .svc-inner { grid-template-columns: 1fr; gap: 36px; }
             .svc-section:nth-child(even) .svc-inner { direction: ltr; }
             .svc-num-big { font-size: 80px; margin-bottom: -10px; }
+            .svc-placeholder { height: 280px; }
+            .svc-img-wrap img { height: 280px; }
             .cta-inner { grid-template-columns: 1fr; gap: 40px; }
             .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
             .container { padding: 0 20px; }
-            .svc-section { padding: 64px 0; }
+            .svc-section { padding: 60px 0; }
             .ph-nav { gap: 6px; }
             .ph-nav a { font-size: 11px; padding: 7px 12px; }
         }
@@ -224,8 +290,8 @@
 <!-- NAV -->
 <nav id="mainNav">
     <a href="index.html" class="logo">
-        <div class="logo-mark" style="background:none;clip-path:none;">
-            <img src="logo.png" alt="Izwe 2 Projects Logo" style="width:38px;height:38px;object-fit:contain;">
+        <div class="logo-mark">
+            <img src="logo.png" alt="Izwe 2 Projects Logo" style="width:38px;height:38px;object-fit:contain;" onerror="this.style.display='none'">
         </div>
         <div class="logo-text">
             <strong>Izwe 2 Projects</strong>
@@ -323,7 +389,8 @@
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-img-wrap">
-                    <img src="resident1.jpg" alt="Residential building construction by Izwe 2 Projects West Coast">
+                    <img src="resident1.jpg" alt="Residential building construction by Izwe 2 Projects West Coast"
+                         onerror="this.parentElement.classList.add('img-failed');this.style.display='none'">
                     <div class="svc-img-overlay"></div>
                     <div class="svc-img-tag">Building</div>
                 </div>
@@ -358,7 +425,8 @@
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-img-wrap">
-                    <img src="Showertiles.jpg" alt="Shower tiling installation by Izwe 2 Projects Saldanha West Coast">
+                    <img src="Showertiles.jpg" alt="Shower tiling installation by Izwe 2 Projects Saldanha West Coast"
+                         onerror="this.parentElement.classList.add('img-failed');this.style.display='none'">
                     <div class="svc-img-overlay"></div>
                     <div class="svc-img-tag">Tiling</div>
                 </div>
@@ -391,12 +459,18 @@
                     Get a Carpentry Quote
                 </a>
             </div>
+            <!-- FIX: Replaced bare grey placeholder with branded card -->
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
-                    <div class="svc-placeholder-ico">
+                    <div class="svc-ph-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
                     </div>
-                    <p>Carpentry Showcase Photo</p>
+                    <div class="svc-ph-title">Carpentry</div>
+                    <div class="svc-ph-sub">Photo coming soon</div>
+                    <a href="https://wa.me/27766714106?text=Hi%2C%20I'm%20interested%20in%20a%20Carpentry%20quote" class="svc-ph-wa" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="#4cce7e"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        WhatsApp for a Quote
+                    </a>
                 </div>
             </div>
         </div>
@@ -427,12 +501,18 @@
                     Get a Screeding Quote
                 </a>
             </div>
+            <!-- FIX: Branded placeholder -->
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
-                    <div class="svc-placeholder-ico">
+                    <div class="svc-ph-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                     </div>
-                    <p>Floor Screeding Photo</p>
+                    <div class="svc-ph-title">Floor Screeding</div>
+                    <div class="svc-ph-sub">Photo coming soon</div>
+                    <a href="https://wa.me/27766714106?text=Hi%2C%20I'm%20interested%20in%20a%20Floor%20Screeding%20quote" class="svc-ph-wa" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="#4cce7e"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        WhatsApp for a Quote
+                    </a>
                 </div>
             </div>
         </div>
@@ -463,12 +543,18 @@
                     Get a Decking Quote
                 </a>
             </div>
+            <!-- FIX: Branded placeholder -->
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
-                    <div class="svc-placeholder-ico">
+                    <div class="svc-ph-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
                     </div>
-                    <p>Decking Showcase Photo</p>
+                    <div class="svc-ph-title">Decking</div>
+                    <div class="svc-ph-sub">Photo coming soon</div>
+                    <a href="https://wa.me/27766714106?text=Hi%2C%20I'm%20interested%20in%20a%20Decking%20quote" class="svc-ph-wa" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="#4cce7e"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        WhatsApp for a Quote
+                    </a>
                 </div>
             </div>
         </div>
@@ -501,7 +587,8 @@
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-img-wrap">
-                    <img src="paintedwall.jpg" alt="Professional wall plastering and painting by Izwe 2 Projects Vredenburg">
+                    <img src="paintedwall.jpg" alt="Professional wall plastering and painting by Izwe 2 Projects Vredenburg"
+                         onerror="this.parentElement.classList.add('img-failed');this.style.display='none'">
                     <div class="svc-img-overlay"></div>
                     <div class="svc-img-tag">Painting</div>
                 </div>
@@ -534,12 +621,18 @@
                     Get a Waterproofing Quote
                 </a>
             </div>
+            <!-- FIX: Branded placeholder -->
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
-                    <div class="svc-placeholder-ico">
+                    <div class="svc-ph-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
                     </div>
-                    <p>Waterproofing Project Photo</p>
+                    <div class="svc-ph-title">Waterproofing</div>
+                    <div class="svc-ph-sub">Photo coming soon</div>
+                    <a href="https://wa.me/27766714106?text=Hi%2C%20I'm%20interested%20in%20a%20Waterproofing%20quote" class="svc-ph-wa" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="#4cce7e"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        WhatsApp for a Quote
+                    </a>
                 </div>
             </div>
         </div>
@@ -572,7 +665,8 @@
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-img-wrap">
-                    <img src="BraaiBuild.jpg" alt="Custom braai outdoor entertainment build by Izwe 2 Projects West Coast">
+                    <img src="BraaiBuild.jpg" alt="Custom braai outdoor entertainment build by Izwe 2 Projects West Coast"
+                         onerror="this.parentElement.classList.add('img-failed');this.style.display='none'">
                     <div class="svc-img-overlay"></div>
                     <div class="svc-img-tag">Renovations</div>
                 </div>
@@ -615,7 +709,7 @@
         <div class="foot-grid">
             <div class="foot-brand">
                 <a href="index.html" class="logo">
-                    <div class="logo-mark" style="background:none;clip-path:none;"><img src="logo.png" alt="Izwe 2 Projects Logo" style="width:38px;height:38px;object-fit:contain;"></div>
+                    <div class="logo-mark"><img src="logo.png" alt="Logo" style="width:38px;height:38px;object-fit:contain;" onerror="this.style.display='none'"></div>
                     <div class="logo-text"><strong>Izwe 2 Projects</strong><span>General and Civil Works &middot; West Coast</span></div>
                 </a>
                 <p>Locally operated general and civil construction company serving the West Coast of South Africa. Built on trust. Built to last.</p>
@@ -662,7 +756,7 @@
                     <p style="font-size:13.5px;line-height:1.9;color:var(--body);">
                         <a href="tel:+27766714106" style="color:var(--body);text-decoration:none;">076 671 4106</a><br>
                         <a href="tel:+27748847688" style="color:var(--body);text-decoration:none;">074 884 7688</a><br>
-                        <a href="/cdn-cgi/l/email-protection#1d7c7a7a686e69747378252f255d7a707c7471337e7270" style="color:var(--body);text-decoration:none;"><span class="__cf_email__" data-cfemail="630204041610170a0d065b515b23040e020a0f4d000c0e">[email&#160;protected]</span></a><br>
+                        <a href="mailto:aggustine828@gmail.com" style="color:var(--body);text-decoration:none;">aggustine828@gmail.com</a><br>
                         Vredenburg, West Coast
                     </p>
                 </div>
@@ -679,13 +773,16 @@
     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Nav scroll effect
+<script>
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
         nav.classList.toggle('scrolled', window.scrollY > 60);
     });
-
-    // Scroll animations
     const fus = document.querySelectorAll('.fu');
-    const obs =
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    fus.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
