@@ -93,23 +93,9 @@
         .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
 
         /* PAGE HERO */
-        .page-hero {
-            padding: 144px 0 80px;
-            background: var(--ink);
-            position: relative; overflow: hidden;
-        }
-        .page-hero::before {
-            content: '';
-            position: absolute; top: 0; right: 0;
-            width: 50%; height: 100%;
-            background: linear-gradient(135deg, transparent 30%, rgba(212,43,53,0.07) 100%);
-        }
-        .page-hero::after {
-            content: '';
-            position: absolute; bottom: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(to right, var(--red), var(--redf) 40%, transparent);
-        }
+        .page-hero { padding: 144px 0 80px; background: var(--ink); position: relative; overflow: hidden; }
+        .page-hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(135deg, transparent 30%, rgba(212,43,53,0.07) 100%); }
+        .page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(to right, var(--red), var(--redf) 40%, transparent); }
 
         .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px; }
         .breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
@@ -164,15 +150,7 @@
             background-repeat: no-repeat; background-position: center;
         }
 
-        .wa-btn {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: #25D366; color: white;
-            padding: 14px 28px; border-radius: var(--r2);
-            font-family: var(--font-head); font-size: 15px; font-weight: 700;
-            letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
-            box-shadow: 0 4px 18px rgba(37,211,102,0.35);
-            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-        }
+        .wa-btn { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 14px 28px; border-radius: var(--r2); font-family: var(--font-head); font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; box-shadow: 0 4px 18px rgba(37,211,102,0.35); transition: background 0.2s, transform 0.15s, box-shadow 0.2s; }
         .wa-btn:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(37,211,102,0.45); }
         .wa-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
@@ -183,16 +161,7 @@
         .svc-img-wrap:hover img { transform: scale(1.04); }
         .svc-img-tag { position: absolute; bottom: 20px; left: 20px; background: var(--red); color: white; padding: 6px 16px; border-radius: 20px; font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
 
-        /* Placeholder for missing images */
-        .svc-placeholder {
-            width: 100%; height: 460px;
-            background: var(--cream);
-            border: 1.5px solid var(--border);
-            border-radius: var(--r3);
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            gap: 0; position: relative; overflow: hidden;
-        }
+        .svc-placeholder { width: 100%; height: 460px; background: var(--cream); border: 1.5px solid var(--border); border-radius: var(--r3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; position: relative; overflow: hidden; }
         .svc-placeholder::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(to right, var(--red), transparent); }
         .svc-ph-icon { width: 72px; height: 72px; background: var(--red-l); border: 1.5px solid var(--red-b); border-radius: var(--r2); display: flex; align-items: center; justify-content: center; color: var(--red); margin-bottom: 20px; }
         .svc-ph-icon svg { width: 30px; height: 30px; }
@@ -200,6 +169,146 @@
         .svc-ph-sub { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); margin-bottom: 28px; }
         .svc-ph-wa { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: rgba(37,211,102,0.1); border: 1.5px solid rgba(37,211,102,0.25); border-radius: var(--r2); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #1a9e4a; text-decoration: none; transition: background 0.2s; }
         .svc-ph-wa:hover { background: rgba(37,211,102,0.18); }
+
+        /* ═══ SERVICE PHOTO STRIP ═══ */
+        .svc-photos {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1.5px solid var(--border);
+        }
+        .svc-photos-label {
+            font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--light);
+            margin-bottom: 14px;
+        }
+        .svc-photos-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .svc-photo-thumb {
+            position: relative;
+            border-radius: var(--r2);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: var(--cream);
+            cursor: pointer;
+            border: 1.5px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .svc-photo-thumb:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .svc-photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+        .svc-photo-thumb:hover img { transform: scale(1.07); }
+        .svc-photo-thumb .thumb-overlay {
+            position: absolute; inset: 0;
+            background: rgba(15,12,8,0);
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.25s;
+        }
+        .svc-photo-thumb:hover .thumb-overlay { background: rgba(15,12,8,0.35); }
+        .thumb-overlay svg { opacity: 0; transform: scale(0.8); transition: opacity 0.25s, transform 0.25s; color: white; width: 28px; height: 28px; }
+        .svc-photo-thumb:hover .thumb-overlay svg { opacity: 1; transform: scale(1); }
+        /* Empty thumb placeholder */
+        .svc-photo-thumb.empty {
+            display: flex; align-items: center; justify-content: center;
+            cursor: default; border-style: dashed;
+        }
+        .svc-photo-thumb.empty:hover { transform: none; box-shadow: none; }
+        .svc-photo-thumb.empty span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); }
+
+        /* ═══ FULL MASONRY GALLERY ═══ */
+        #gallery { background: var(--ink); padding: 96px 0; }
+        .gallery-hd { text-align: center; margin-bottom: 52px; }
+        .gallery-hd .label-tag { background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.2); display: inline-flex; }
+        .gallery-hd h2 { font-family: var(--font-head); font-size: clamp(42px,5vw,72px); font-weight: 900; line-height: 0.95; color: white; text-transform: uppercase; margin-bottom: 16px; }
+        .gallery-hd h2 em { font-style: normal; color: var(--redf); }
+        .gallery-hd p { color: rgba(255,255,255,0.5); font-size: 15px; max-width: 460px; margin: 0 auto; }
+
+        /* Filter bar */
+        .gallery-filters {
+            display: flex; justify-content: center; gap: 8px;
+            flex-wrap: wrap; margin-bottom: 40px;
+        }
+        .gf-btn {
+            padding: 9px 20px;
+            background: rgba(255,255,255,0.07);
+            border: 1.5px solid rgba(255,255,255,0.14);
+            border-radius: 30px;
+            font-family: var(--font-body); font-size: 12px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            cursor: pointer; transition: all 0.2s;
+        }
+        .gf-btn:hover { background: rgba(255,255,255,0.14); color: white; }
+        .gf-btn.active { background: var(--red); border-color: var(--red); color: white; }
+
+        /* Masonry columns */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 14px;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 14px;
+            position: relative;
+            border-radius: var(--r2);
+            overflow: hidden;
+            cursor: pointer;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .masonry-item:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+        .masonry-item img { width: 100%; display: block; object-fit: cover; transition: transform 0.55s ease; filter: brightness(0.92); }
+        .masonry-item:hover img { transform: scale(1.05); filter: brightness(1); }
+        .masonry-item.hidden-item { display: none; }
+
+        .masonry-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(15,12,8,0.85) 0%, transparent 60%);
+            opacity: 0; transition: opacity 0.25s;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 18px;
+        }
+        .masonry-item:hover .masonry-overlay { opacity: 1; }
+        .masonry-tag { display: inline-block; padding: 3px 10px; background: var(--red); color: white; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; border-radius: 3px; margin-bottom: 6px; width: fit-content; }
+        .masonry-name { font-family: var(--font-head); font-size: 17px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 0.02em; }
+
+        /* Empty gallery placeholder */
+        .masonry-item.empty-card {
+            cursor: default;
+            display: flex; align-items: center; justify-content: center;
+            min-height: 180px;
+        }
+        .masonry-item.empty-card:hover { transform: none; box-shadow: none; }
+        .empty-card-inner { text-align: center; padding: 24px; }
+        .empty-card-inner p { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px; }
+
+        /* ═══ LIGHTBOX ═══ */
+        .lightbox {
+            display: none;
+            position: fixed; inset: 0; z-index: 1000;
+            background: rgba(10,8,5,0.96);
+            backdrop-filter: blur(12px);
+            align-items: center; justify-content: center;
+            padding: 20px;
+            animation: lbFadeIn 0.25s ease;
+        }
+        .lightbox.open { display: flex; }
+        @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .lb-inner { position: relative; max-width: 1100px; width: 100%; }
+        .lb-img-wrap { border-radius: var(--r2); overflow: hidden; box-shadow: 0 32px 100px rgba(0,0,0,0.7); background: var(--ink); }
+        .lb-img-wrap img { width: 100%; max-height: 85vh; object-fit: contain; display: block; }
+        .lb-caption { padding: 16px 4px 0; display: flex; justify-content: space-between; align-items: center; }
+        .lb-cap-text { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.04em; }
+        .lb-cap-tag { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 3px; }
+        .lb-close { position: absolute; top: -48px; right: 0; background: rgba(255,255,255,0.1); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .lb-close:hover { background: var(--red); }
+        .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: white; width: 48px; height: 48px; border-radius: 50%; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; border: 1px solid rgba(255,255,255,0.15); }
+        .lb-nav:hover { background: var(--red); border-color: var(--red); }
+        .lb-prev { left: -70px; }
+        .lb-next { right: -70px; }
+        .lb-counter { font-size: 12px; letter-spacing: 0.12em; color: rgba(255,255,255,0.4); text-align: right; }
 
         /* CTA BAND */
         .cta-band { background: var(--off); padding: 96px 0; border-top: 1.5px solid var(--border); }
@@ -214,7 +323,6 @@
         .phone-link:hover { color: var(--ink); }
         .phone-link svg { width: 16px; height: 16px; }
         .phone-sep { color: var(--border); font-size: 20px; }
-
         .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--red); color: white; padding: 15px 34px; border-radius: var(--r2); font-family: var(--font-head); font-size: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; box-shadow: 0 6px 24px rgba(212,43,53,0.35); transition: background 0.2s, transform 0.15s; }
         .btn-primary:hover { background: var(--redf); transform: translateY(-2px); }
         .btn-secondary { display: inline-flex; align-items: center; gap: 10px; background: white; color: var(--ink); padding: 15px 34px; border-radius: var(--r2); font-family: var(--font-head); font-size: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--border); transition: border-color 0.2s, box-shadow 0.2s; }
@@ -243,11 +351,15 @@
         .fu.in { opacity: 1; transform: translateY(0); }
         .fu.d1 { transition-delay: 0.1s; } .fu.d2 { transition-delay: 0.2s; }
 
+        /* RESPONSIVE */
         @media (max-width: 1100px) {
             .trust-grid { grid-template-columns: repeat(2,1fr); }
             .trust-item:nth-child(3) { border-left: none; border-top: 1px solid rgba(255,255,255,0.2); }
             .trust-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.2); }
             .foot-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+            .masonry-grid { column-count: 2; }
+            .lb-prev { left: -56px; }
+            .lb-next { right: -56px; }
         }
         @media (max-width: 860px) {
             nav { padding: 0 20px; } .nav-links { display: none; } .nav-mob-btn { display: flex; }
@@ -259,11 +371,16 @@
             .svc-section { padding: 64px 0; }
             .cta-inner { grid-template-columns: 1fr; gap: 40px; }
             .ph-nav a { font-size: 11px; padding: 7px 14px; }
+            .masonry-grid { column-count: 2; }
+            .svc-photos-strip { grid-template-columns: repeat(2, 1fr); }
+            .lb-prev, .lb-next { display: none; }
         }
         @media (max-width: 560px) {
             .foot-grid { grid-template-columns: 1fr; }
             .trust-grid { grid-template-columns: 1fr 1fr; }
             .trust-item:nth-child(3) { border-left: none; border-top: 1px solid rgba(255,255,255,0.2); }
+            .masonry-grid { column-count: 1; }
+            .svc-photos-strip { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -282,7 +399,7 @@
     <ul class="nav-links" role="list">
         <li><a href="index.html#about">About</a></li>
         <li><a href="services.html" class="active">Services</a></li>
-        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="index.html#areas">Areas</a></li>
         <li><a href="index.html#testimonials">Reviews</a></li>
         <li><a href="contact.html" class="nav-cta">Free Quote</a></li>
@@ -301,7 +418,7 @@
     </div>
     <a href="index.html#about" onclick="document.getElementById('mobMenu').classList.remove('open')">About</a>
     <a href="services.html" onclick="document.getElementById('mobMenu').classList.remove('open')">Services</a>
-    <a href="index.html#projects" onclick="document.getElementById('mobMenu').classList.remove('open')">Projects</a>
+    <a href="#gallery" onclick="document.getElementById('mobMenu').classList.remove('open')">Gallery</a>
     <a href="index.html#areas" onclick="document.getElementById('mobMenu').classList.remove('open')">Areas</a>
     <a href="index.html#testimonials" onclick="document.getElementById('mobMenu').classList.remove('open')">Reviews</a>
     <a href="contact.html" onclick="document.getElementById('mobMenu').classList.remove('open')" style="color:var(--red);margin-top:20px;">Get a Free Quote &rarr;</a>
@@ -327,6 +444,7 @@
             <a href="#painting">Painting</a>
             <a href="#waterproofing">Waterproofing</a>
             <a href="#renovations">Renovations</a>
+            <a href="#gallery" style="background:rgba(212,43,53,0.25);border-color:rgba(212,43,53,0.4);color:white;">📷 Photo Gallery</a>
         </div>
     </div>
 </div>
@@ -343,7 +461,12 @@
     </div>
 </div>
 
-<!-- 01: BUILDING -->
+<!-- WA SVG SHORTHAND -->
+<template id="wa-icon">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</template>
+
+<!-- ══ 01: BUILDING ══ -->
 <section class="svc-section" id="building" aria-labelledby="building-heading">
     <div class="container">
         <div class="svc-inner">
@@ -366,6 +489,24 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Building Quote
                 </a>
+                <!-- Photo strip -->
+                <div class="svc-photos">
+                    <div class="svc-photos-label">Project Photos</div>
+                    <div class="svc-photos-strip">
+                        <div class="svc-photo-thumb" onclick="openLightbox('building',0)" data-src="building1.jpg" data-cat="building" data-name="Building Project">
+                            <img src="building1.jpg" alt="Building project 1" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('building',1)" data-src="building2.jpg" data-cat="building" data-name="Building Project">
+                            <img src="building2.jpg" alt="Building project 2" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('building',2)" data-src="resident1.jpg" data-cat="building" data-name="Residential Build">
+                            <img src="resident1.jpg" alt="Residential build" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-img-wrap">
@@ -383,7 +524,7 @@
     </div>
 </section>
 
-<!-- 02: TILING -->
+<!-- ══ 02: TILING ══ -->
 <section class="svc-section" id="tiling" aria-labelledby="tiling-heading">
     <div class="container">
         <div class="svc-inner">
@@ -406,6 +547,23 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Tiling Quote
                 </a>
+                <div class="svc-photos">
+                    <div class="svc-photos-label">Project Photos</div>
+                    <div class="svc-photos-strip">
+                        <div class="svc-photo-thumb" onclick="openLightbox('tiling',0)" data-src="Showertiles.jpg" data-cat="tiling" data-name="Shower Tiling">
+                            <img src="Showertiles.jpg" alt="Shower tiling" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('tiling',1)" data-src="tiling1.jpg" data-cat="tiling" data-name="Floor Tiling">
+                            <img src="tiling1.jpg" alt="Floor tiling" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('tiling',2)" data-src="tiling2.jpg" data-cat="tiling" data-name="Tiling Work">
+                            <img src="tiling2.jpg" alt="Tiling project" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-img-wrap">
@@ -423,7 +581,7 @@
     </div>
 </section>
 
-<!-- 03: CARPENTRY -->
+<!-- ══ 03: CARPENTRY ══ -->
 <section class="svc-section" id="carpentry" aria-labelledby="carpentry-heading">
     <div class="container">
         <div class="svc-inner">
@@ -446,6 +604,20 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Carpentry Quote
                 </a>
+                <div class="svc-photos">
+                    <div class="svc-photos-label">Project Photos</div>
+                    <div class="svc-photos-strip">
+                        <div class="svc-photo-thumb" onclick="openLightbox('carpentry',0)" data-src="carpentry1.jpg" data-cat="carpentry" data-name="Carpentry Work">
+                            <img src="carpentry1.jpg" alt="Carpentry project 1" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('carpentry',1)" data-src="carpentry2.jpg" data-cat="carpentry" data-name="Carpentry Work">
+                            <img src="carpentry2.jpg" alt="Carpentry project 2" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
+                    </div>
+                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
@@ -459,7 +631,7 @@
     </div>
 </section>
 
-<!-- 04: FLOOR SCREEDING -->
+<!-- ══ 04: FLOOR SCREEDING ══ -->
 <section class="svc-section" id="screeding" aria-labelledby="screeding-heading">
     <div class="container">
         <div class="svc-inner">
@@ -482,6 +654,17 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Screeding Quote
                 </a>
+                <div class="svc-photos">
+                    <div class="svc-photos-label">Project Photos</div>
+                    <div class="svc-photos-strip">
+                        <div class="svc-photo-thumb" onclick="openLightbox('screeding',0)" data-src="screeding1.jpg" data-cat="screeding" data-name="Floor Screed">
+                            <img src="screeding1.jpg" alt="Floor screeding" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
+                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
+                    </div>
+                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
@@ -495,7 +678,7 @@
     </div>
 </section>
 
-<!-- 05: DECKING -->
+<!-- ══ 05: DECKING ══ -->
 <section class="svc-section" id="decking" aria-labelledby="decking-heading">
     <div class="container">
         <div class="svc-inner">
@@ -518,6 +701,20 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Decking Quote
                 </a>
+                <div class="svc-photos">
+                    <div class="svc-photos-label">Project Photos</div>
+                    <div class="svc-photos-strip">
+                        <div class="svc-photo-thumb" onclick="openLightbox('decking',0)" data-src="decking1.jpg" data-cat="decking" data-name="Timber Deck">
+                            <img src="decking1.jpg" alt="Decking project 1" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('decking',1)" data-src="decking2.jpg" data-cat="decking" data-name="Deck Build">
+                            <img src="decking2.jpg" alt="Decking project 2" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
+                    </div>
+                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
@@ -531,7 +728,7 @@
     </div>
 </section>
 
-<!-- 06: PAINTING -->
+<!-- ══ 06: PAINTING ══ -->
 <section class="svc-section" id="painting" aria-labelledby="painting-heading">
     <div class="container">
         <div class="svc-inner">
@@ -554,6 +751,20 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Painting Quote
                 </a>
+                <div class="svc-photos">
+                    <div class="svc-photos-label">Project Photos</div>
+                    <div class="svc-photos-strip">
+                        <div class="svc-photo-thumb" onclick="openLightbox('painting',0)" data-src="paintedwall.jpg" data-cat="painting" data-name="Painted Wall">
+                            <img src="paintedwall.jpg" alt="Painted wall" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('painting',1)" data-src="painting1.jpg" data-cat="painting" data-name="Interior Painting">
+                            <img src="painting1.jpg" alt="Interior painting" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
+                    </div>
+                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-img-wrap">
@@ -571,7 +782,7 @@
     </div>
 </section>
 
-<!-- 07: WATERPROOFING -->
+<!-- ══ 07: WATERPROOFING ══ -->
 <section class="svc-section" id="waterproofing" aria-labelledby="waterproofing-heading">
     <div class="container">
         <div class="svc-inner">
@@ -594,6 +805,17 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Waterproofing Quote
                 </a>
+                <div class="svc-photos">
+                    <div class="svc-photos-label">Project Photos</div>
+                    <div class="svc-photos-strip">
+                        <div class="svc-photo-thumb" onclick="openLightbox('waterproofing',0)" data-src="waterproofing1.jpg" data-cat="waterproofing" data-name="Waterproofing">
+                            <img src="waterproofing1.jpg" alt="Waterproofing project" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
+                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
+                    </div>
+                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
@@ -607,7 +829,7 @@
     </div>
 </section>
 
-<!-- 08: RENOVATIONS -->
+<!-- ══ 08: RENOVATIONS ══ -->
 <section class="svc-section" id="renovations" aria-labelledby="renovations-heading">
     <div class="container">
         <div class="svc-inner">
@@ -630,6 +852,23 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Renovation Quote
                 </a>
+                <div class="svc-photos">
+                    <div class="svc-photos-label">Project Photos</div>
+                    <div class="svc-photos-strip">
+                        <div class="svc-photo-thumb" onclick="openLightbox('renovations',0)" data-src="BraaiBuild.jpg" data-cat="renovations" data-name="Braai Build">
+                            <img src="BraaiBuild.jpg" alt="Braai and entertainment area" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('renovations',1)" data-src="renovation1.jpg" data-cat="renovations" data-name="Renovation Project">
+                            <img src="renovation1.jpg" alt="Renovation project" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('renovations',2)" data-src="renovation2.jpg" data-cat="renovations" data-name="Renovation Project">
+                            <img src="renovation2.jpg" alt="Renovation project 2" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-img-wrap">
@@ -646,6 +885,137 @@
         </div>
     </div>
 </section>
+
+<!-- ══ FULL PHOTO GALLERY ══ -->
+<section id="gallery" aria-labelledby="gallery-heading">
+    <div class="gallery-hd">
+        <div class="label-tag" style="background:rgba(255,255,255,0.1);color:white;border-color:rgba(255,255,255,0.2);">Our Work</div>
+        <h2 id="gallery-heading">Project <em>Gallery</em></h2>
+        <p>A look at some of the work we've completed across the West Coast</p>
+    </div>
+    <div class="gallery-filters" role="group" aria-label="Filter gallery">
+        <button class="gf-btn active" onclick="filterGallery(this,'all')">All Projects</button>
+        <button class="gf-btn" onclick="filterGallery(this,'building')">Building</button>
+        <button class="gf-btn" onclick="filterGallery(this,'tiling')">Tiling</button>
+        <button class="gf-btn" onclick="filterGallery(this,'carpentry')">Carpentry</button>
+        <button class="gf-btn" onclick="filterGallery(this,'decking')">Decking</button>
+        <button class="gf-btn" onclick="filterGallery(this,'painting')">Painting</button>
+        <button class="gf-btn" onclick="filterGallery(this,'waterproofing')">Waterproofing</button>
+        <button class="gf-btn" onclick="filterGallery(this,'renovations')">Renovations</button>
+    </div>
+    <div class="container">
+        <div class="masonry-grid" id="masonryGrid">
+            <!-- Building -->
+            <div class="masonry-item fu" data-cat="building" onclick="openGalleryLightbox(this)">
+                <img src="resident1.jpg" alt="Residential build West Coast" style="height:320px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Residential Build</div></div>
+            </div>
+            <div class="masonry-item fu d1" data-cat="building" onclick="openGalleryLightbox(this)">
+                <img src="building1.jpg" alt="Building project 1" style="height:240px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">New Construction</div></div>
+            </div>
+            <div class="masonry-item fu d2" data-cat="building" onclick="openGalleryLightbox(this)">
+                <img src="building2.jpg" alt="Building project 2" style="height:200px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Construction Work</div></div>
+            </div>
+            <!-- Tiling -->
+            <div class="masonry-item fu" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                <img src="Showertiles.jpg" alt="Shower tiling" style="height:280px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Shower Tiling</div></div>
+            </div>
+            <div class="masonry-item fu d1" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                <img src="tiling1.jpg" alt="Floor tiling" style="height:220px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Floor Tiling</div></div>
+            </div>
+            <div class="masonry-item fu d2" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                <img src="tiling2.jpg" alt="Tiling project" style="height:260px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Tiling Project</div></div>
+            </div>
+            <!-- Painting -->
+            <div class="masonry-item fu" data-cat="painting" onclick="openGalleryLightbox(this)">
+                <img src="paintedwall.jpg" alt="Painted wall" style="height:250px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Painting</span><div class="masonry-name">Exterior Painting</div></div>
+            </div>
+            <div class="masonry-item fu d1" data-cat="painting" onclick="openGalleryLightbox(this)">
+                <img src="painting1.jpg" alt="Interior painting" style="height:210px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Painting</span><div class="masonry-name">Interior Painting</div></div>
+            </div>
+            <!-- Renovations -->
+            <div class="masonry-item fu" data-cat="renovations" onclick="openGalleryLightbox(this)">
+                <img src="BraaiBuild.jpg" alt="Braai entertainment area" style="height:300px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Braai Entertainment Area</div></div>
+            </div>
+            <div class="masonry-item fu d1" data-cat="renovations" onclick="openGalleryLightbox(this)">
+                <img src="renovation1.jpg" alt="Renovation project" style="height:230px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Renovation Project</div></div>
+            </div>
+            <div class="masonry-item fu d2" data-cat="renovations" onclick="openGalleryLightbox(this)">
+                <img src="renovation2.jpg" alt="Renovation project 2" style="height:260px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Interior Transformation</div></div>
+            </div>
+            <!-- Carpentry -->
+            <div class="masonry-item fu" data-cat="carpentry" onclick="openGalleryLightbox(this)">
+                <img src="carpentry1.jpg" alt="Carpentry work" style="height:240px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Carpentry</span><div class="masonry-name">Carpentry Work</div></div>
+            </div>
+            <div class="masonry-item fu d1" data-cat="carpentry" onclick="openGalleryLightbox(this)">
+                <img src="carpentry2.jpg" alt="Carpentry project 2" style="height:200px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Carpentry</span><div class="masonry-name">Timber Work</div></div>
+            </div>
+            <!-- Decking -->
+            <div class="masonry-item fu" data-cat="decking" onclick="openGalleryLightbox(this)">
+                <img src="decking1.jpg" alt="Timber decking" style="height:270px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Decking</span><div class="masonry-name">Timber Deck Build</div></div>
+            </div>
+            <div class="masonry-item fu d1" data-cat="decking" onclick="openGalleryLightbox(this)">
+                <img src="decking2.jpg" alt="Deck project" style="height:220px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Decking</span><div class="masonry-name">Outdoor Deck</div></div>
+            </div>
+            <!-- Waterproofing -->
+            <div class="masonry-item fu" data-cat="waterproofing" onclick="openGalleryLightbox(this)">
+                <img src="waterproofing1.jpg" alt="Waterproofing project" style="height:220px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Waterproofing</span><div class="masonry-name">Roof Waterproofing</div></div>
+            </div>
+            <!-- Screeding -->
+            <div class="masonry-item fu d1" data-cat="screeding" onclick="openGalleryLightbox(this)">
+                <img src="screeding1.jpg" alt="Floor screeding" style="height:200px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Screeding</span><div class="masonry-name">Floor Screed</div></div>
+            </div>
+            <!-- General site pics -->
+            <div class="masonry-item fu" data-cat="building" onclick="openGalleryLightbox(this)">
+                <img src="pic1.jpeg" alt="Izwe 2 Projects West Coast construction" style="height:290px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">West Coast Project</div></div>
+            </div>
+            <div class="masonry-item fu d1" data-cat="renovations" onclick="openGalleryLightbox(this)">
+                <img src="pic2.jpeg" alt="Interior finishing" style="height:240px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Interior Finishing</div></div>
+            </div>
+            <div class="masonry-item fu d2" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                <img src="pic3.jpeg" alt="Tiling and plastering" style="height:220px;" onerror="this.style.display='none'">
+                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Tiling &amp; Plastering</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ LIGHTBOX ══ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="closeLightboxOnBg(event)">
+    <div class="lb-inner">
+        <button class="lb-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+        <button class="lb-nav lb-prev" onclick="navigateLightbox(-1)" aria-label="Previous photo">&#8592;</button>
+        <button class="lb-nav lb-next" onclick="navigateLightbox(1)" aria-label="Next photo">&#8594;</button>
+        <div class="lb-img-wrap">
+            <img id="lbImg" src="" alt="">
+        </div>
+        <div class="lb-caption">
+            <div>
+                <div class="lb-cap-text" id="lbName"></div>
+                <div class="lb-cap-tag" id="lbTag"></div>
+            </div>
+            <div class="lb-counter" id="lbCounter"></div>
+        </div>
+    </div>
+</div>
 
 <!-- CTA BAND -->
 <div class="cta-band">
@@ -736,13 +1106,99 @@
 </a>
 
 <script>
+    // Nav scroll
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+    // Scroll animations
     const fus = document.querySelectorAll('.fu');
     const obs = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     fus.forEach(el => obs.observe(el));
+
+    // ── GALLERY FILTER ──
+    function filterGallery(btn, cat) {
+        document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.masonry-item').forEach(item => {
+            if (cat === 'all' || item.dataset.cat === cat) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // ── LIGHTBOX ──
+    let lbItems = [];
+    let lbIndex = 0;
+
+    // Open from gallery masonry grid
+    function openGalleryLightbox(el) {
+        const img = el.querySelector('img');
+        if (!img || img.style.display === 'none') return;
+        const name = el.querySelector('.masonry-name')?.textContent || '';
+        const tag  = el.querySelector('.masonry-tag')?.textContent || '';
+
+        // Collect all visible masonry items
+        lbItems = Array.from(document.querySelectorAll('.masonry-item')).filter(i => {
+            const im = i.querySelector('img');
+            return im && im.style.display !== 'none' && i.style.display !== 'none';
+        });
+        lbIndex = lbItems.indexOf(el);
+        showLightboxItem(lbIndex);
+    }
+
+    // Open from service strip thumbnails (kept for inline clicking)
+    function openLightbox(cat, idx) {
+        // Filter masonry items by cat
+        lbItems = Array.from(document.querySelectorAll('.masonry-item')).filter(i => {
+            const im = i.querySelector('img');
+            return i.dataset.cat === cat && im && im.style.display !== 'none';
+        });
+        lbIndex = Math.min(idx, lbItems.length - 1);
+        if (lbItems.length === 0) return;
+        showLightboxItem(lbIndex);
+    }
+
+    function showLightboxItem(i) {
+        if (!lbItems.length) return;
+        const el  = lbItems[i];
+        const img = el.querySelector('img');
+        const name = el.querySelector('.masonry-name')?.textContent || '';
+        const tag  = el.querySelector('.masonry-tag')?.textContent || '';
+
+        document.getElementById('lbImg').src = img.src;
+        document.getElementById('lbImg').alt = img.alt;
+        document.getElementById('lbName').textContent = name;
+        document.getElementById('lbTag').textContent = tag;
+        document.getElementById('lbCounter').textContent = `${i + 1} / ${lbItems.length}`;
+        document.getElementById('lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    function closeLightboxOnBg(e) {
+        if (e.target === document.getElementById('lightbox')) closeLightbox();
+    }
+
+    function navigateLightbox(dir) {
+        lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
+        showLightboxItem(lbIndex);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+        if (!document.getElementById('lightbox').classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') navigateLightbox(1);
+        if (e.key === 'ArrowLeft')  navigateLightbox(-1);
+    });
 </script>
 </body>
 </html>
