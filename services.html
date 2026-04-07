@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Services | Izwe 2 Projects — Building, Tiling, Carpentry & More — West Coast SA</title>
     <meta name="description" content="Full list of construction services by Izwe 2 Projects: Building, Tiling, Carpentry, Floor Screeding, Decking, Painting, Waterproofing and Renovations. Serving Vredenburg, Saldanha & the full West Coast.">
     <meta name="keywords" content="building contractor Vredenburg, tiling Saldanha, carpentry West Coast, floor screeding Vredenburg, decking contractor, painting contractor, waterproofing West Coast SA, renovations Saldanha, construction services Western Cape">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <meta name="author" content="Izwe 2 Projects">
     <link rel="canonical" href="https://izwe2projects.co.za/services.html">
-
     <meta property="og:title" content="Services | Izwe 2 Projects — West Coast Construction">
     <meta property="og:description" content="8 construction services across the West Coast — Building, Tiling, Carpentry, Screeding, Decking, Painting, Waterproofing & Renovations. Call 076 671 4106.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://izwe2projects.co.za/services.html">
     <meta property="og:image" content="https://izwe2projects.co.za/pic1.jpeg">
     <meta property="og:locale" content="en_ZA">
-
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -170,83 +166,118 @@
         .svc-ph-wa { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: rgba(37,211,102,0.1); border: 1.5px solid rgba(37,211,102,0.25); border-radius: var(--r2); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #1a9e4a; text-decoration: none; transition: background 0.2s; }
         .svc-ph-wa:hover { background: rgba(37,211,102,0.18); }
 
-        /* ═══ SERVICE PHOTO STRIP ═══ */
-        .svc-photos {
-            margin-top: 40px;
-            padding-top: 32px;
-            border-top: 1.5px solid var(--border);
-        }
-        .svc-photos-label {
-            font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
-            text-transform: uppercase; color: var(--light);
-            margin-bottom: 14px;
-        }
-        .svc-photos-strip {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .svc-photo-thumb {
-            position: relative;
-            border-radius: var(--r2);
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            background: var(--cream);
-            cursor: pointer;
-            border: 1.5px solid var(--border);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+        /* SERVICE PHOTO STRIP */
+        .svc-photos { margin-top: 40px; padding-top: 32px; border-top: 1.5px solid var(--border); }
+        .svc-photos-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); margin-bottom: 14px; }
+        .svc-photos-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .svc-photo-thumb { position: relative; border-radius: var(--r2); overflow: hidden; aspect-ratio: 4/3; background: var(--cream); cursor: pointer; border: 1.5px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; }
         .svc-photo-thumb:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
         .svc-photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
         .svc-photo-thumb:hover img { transform: scale(1.07); }
-        .svc-photo-thumb .thumb-overlay {
-            position: absolute; inset: 0;
-            background: rgba(15,12,8,0);
-            display: flex; align-items: center; justify-content: center;
-            transition: background 0.25s;
-        }
+        .svc-photo-thumb .thumb-overlay { position: absolute; inset: 0; background: rgba(15,12,8,0); display: flex; align-items: center; justify-content: center; transition: background 0.25s; }
         .svc-photo-thumb:hover .thumb-overlay { background: rgba(15,12,8,0.35); }
         .thumb-overlay svg { opacity: 0; transform: scale(0.8); transition: opacity 0.25s, transform 0.25s; color: white; width: 28px; height: 28px; }
         .svc-photo-thumb:hover .thumb-overlay svg { opacity: 1; transform: scale(1); }
-        /* Empty thumb placeholder */
-        .svc-photo-thumb.empty {
-            display: flex; align-items: center; justify-content: center;
-            cursor: default; border-style: dashed;
-        }
+        .svc-photo-thumb.empty { display: flex; align-items: center; justify-content: center; cursor: default; border-style: dashed; }
         .svc-photo-thumb.empty:hover { transform: none; box-shadow: none; }
         .svc-photo-thumb.empty span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); }
 
-        /* ═══ FULL MASONRY GALLERY ═══ */
-        #gallery { background: var(--ink); padding: 96px 0; }
-        .gallery-hd { text-align: center; margin-bottom: 52px; }
-        .gallery-hd .label-tag { background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.2); display: inline-flex; }
-        .gallery-hd h2 { font-family: var(--font-head); font-size: clamp(42px,5vw,72px); font-weight: 900; line-height: 0.95; color: white; text-transform: uppercase; margin-bottom: 16px; }
+        /* ═══ GALLERY SECTION — enhanced visibility ═══ */
+        #gallery {
+            background: var(--ink);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Big bold intro banner */
+        .gallery-intro {
+            background: linear-gradient(135deg, var(--ink) 0%, #2a1f14 60%, #1a0d08 100%);
+            padding: 100px 0 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-intro::before {
+            content: 'GALLERY';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-head);
+            font-size: clamp(120px, 18vw, 220px);
+            font-weight: 900;
+            color: rgba(255,255,255,0.025);
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+            pointer-events: none;
+            line-height: 1;
+        }
+        .gallery-intro::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--red), var(--redf) 50%, transparent);
+        }
+        .gallery-hd { text-align: center; position: relative; z-index: 1; }
+        .gallery-hd .label-tag { background: rgba(212,43,53,0.15); color: var(--redf); border-color: rgba(212,43,53,0.3); display: inline-flex; font-size: 11px; letter-spacing: 0.22em; }
+        .gallery-hd h2 { font-family: var(--font-head); font-size: clamp(56px,7vw,96px); font-weight: 900; line-height: 0.92; color: white; text-transform: uppercase; margin-bottom: 20px; }
         .gallery-hd h2 em { font-style: normal; color: var(--redf); }
-        .gallery-hd p { color: rgba(255,255,255,0.5); font-size: 15px; max-width: 460px; margin: 0 auto; }
+        .gallery-hd p { color: rgba(255,255,255,0.55); font-size: 16px; max-width: 480px; margin: 0 auto 0; line-height: 1.75; }
+
+        /* Stats row inside gallery */
+        .gallery-stats {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-top: 52px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .gallery-stat {
+            flex: 1;
+            max-width: 200px;
+            text-align: center;
+            padding: 28px 16px;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .gallery-stat:last-child { border-right: none; }
+        .gallery-stat-num { font-family: var(--font-head); font-size: 44px; font-weight: 900; color: var(--redf); line-height: 1; }
+        .gallery-stat-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px; font-weight: 600; }
 
         /* Filter bar */
+        .gallery-filters-wrap {
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 24px 0;
+            position: sticky;
+            top: 75px;
+            z-index: 10;
+            backdrop-filter: blur(20px);
+        }
         .gallery-filters {
             display: flex; justify-content: center; gap: 8px;
-            flex-wrap: wrap; margin-bottom: 40px;
+            flex-wrap: wrap;
         }
         .gf-btn {
-            padding: 9px 20px;
-            background: rgba(255,255,255,0.07);
-            border: 1.5px solid rgba(255,255,255,0.14);
+            padding: 10px 22px;
+            background: rgba(255,255,255,0.06);
+            border: 1.5px solid rgba(255,255,255,0.12);
             border-radius: 30px;
             font-family: var(--font-body); font-size: 12px; font-weight: 600;
             letter-spacing: 0.08em; text-transform: uppercase;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,0.5);
             cursor: pointer; transition: all 0.2s;
         }
-        .gf-btn:hover { background: rgba(255,255,255,0.14); color: white; }
-        .gf-btn.active { background: var(--red); border-color: var(--red); color: white; }
+        .gf-btn:hover { background: rgba(255,255,255,0.14); color: white; border-color: rgba(255,255,255,0.25); }
+        .gf-btn.active { background: var(--red); border-color: var(--red); color: white; box-shadow: 0 4px 16px rgba(212,43,53,0.4); }
+
+        /* Masonry grid wrapper */
+        .gallery-grid-wrap {
+            padding: 48px 0 80px;
+            background: var(--ink);
+        }
 
         /* Masonry columns */
-        .masonry-grid {
-            column-count: 3;
-            column-gap: 14px;
-        }
+        .masonry-grid { column-count: 3; column-gap: 14px; }
         .masonry-item {
             break-inside: avoid;
             margin-bottom: 14px;
@@ -265,33 +296,25 @@
 
         .masonry-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(15,12,8,0.85) 0%, transparent 60%);
+            background: linear-gradient(to top, rgba(15,12,8,0.88) 0%, rgba(15,12,8,0.1) 55%, transparent 100%);
             opacity: 0; transition: opacity 0.25s;
             display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 18px;
+            padding: 20px;
         }
         .masonry-item:hover .masonry-overlay { opacity: 1; }
         .masonry-tag { display: inline-block; padding: 3px 10px; background: var(--red); color: white; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; border-radius: 3px; margin-bottom: 6px; width: fit-content; }
         .masonry-name { font-family: var(--font-head); font-size: 17px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 0.02em; }
 
-        /* Empty gallery placeholder */
-        .masonry-item.empty-card {
-            cursor: default;
-            display: flex; align-items: center; justify-content: center;
-            min-height: 180px;
-        }
+        .masonry-item.empty-card { cursor: default; display: flex; align-items: center; justify-content: center; min-height: 180px; }
         .masonry-item.empty-card:hover { transform: none; box-shadow: none; }
         .empty-card-inner { text-align: center; padding: 24px; }
         .empty-card-inner p { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px; }
 
-        /* ═══ LIGHTBOX ═══ */
+        /* LIGHTBOX */
         .lightbox {
-            display: none;
-            position: fixed; inset: 0; z-index: 1000;
-            background: rgba(10,8,5,0.96);
-            backdrop-filter: blur(12px);
-            align-items: center; justify-content: center;
-            padding: 20px;
+            display: none; position: fixed; inset: 0; z-index: 1000;
+            background: rgba(10,8,5,0.96); backdrop-filter: blur(12px);
+            align-items: center; justify-content: center; padding: 20px;
             animation: lbFadeIn 0.25s ease;
         }
         .lightbox.open { display: flex; }
@@ -304,7 +327,7 @@
         .lb-cap-tag { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 3px; }
         .lb-close { position: absolute; top: -48px; right: 0; background: rgba(255,255,255,0.1); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
         .lb-close:hover { background: var(--red); }
-        .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: white; width: 48px; height: 48px; border-radius: 50%; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; border: 1px solid rgba(255,255,255,0.15); }
+        .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: white; width: 48px; height: 48px; border-radius: 50%; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
         .lb-nav:hover { background: var(--red); border-color: var(--red); }
         .lb-prev { left: -70px; }
         .lb-next { right: -70px; }
@@ -360,6 +383,7 @@
             .masonry-grid { column-count: 2; }
             .lb-prev { left: -56px; }
             .lb-next { right: -56px; }
+            .gallery-stat { max-width: 160px; }
         }
         @media (max-width: 860px) {
             nav { padding: 0 20px; } .nav-links { display: none; } .nav-mob-btn { display: flex; }
@@ -374,6 +398,9 @@
             .masonry-grid { column-count: 2; }
             .svc-photos-strip { grid-template-columns: repeat(2, 1fr); }
             .lb-prev, .lb-next { display: none; }
+            .gallery-intro { padding: 72px 0 52px; }
+            .gallery-stats { flex-wrap: wrap; }
+            .gallery-stat { min-width: 120px; border-bottom: 1px solid rgba(255,255,255,0.08); }
         }
         @media (max-width: 560px) {
             .foot-grid { grid-template-columns: 1fr; }
@@ -487,16 +514,16 @@
                 <div class="svc-photos">
                     <div class="svc-photos-label">Project Photos</div>
                     <div class="svc-photos-strip">
-                        <div class="svc-photo-thumb" onclick="openLightbox('building',0)" data-src="building1.jpg" data-cat="building" data-name="Building Project">
-                            <img src="building1.jpg" alt="Building project 1" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                        <div class="svc-photo-thumb" onclick="openLightbox('building',0)" data-src="building3.jpg" data-cat="building" data-name="Building Site">
+                            <img src="building3.jpg" alt="Building site" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
-                        <div class="svc-photo-thumb" onclick="openLightbox('building',1)" data-src="building2.jpg" data-cat="building" data-name="Building Project">
-                            <img src="building2.jpg" alt="Building project 2" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                        <div class="svc-photo-thumb" onclick="openLightbox('building',1)" data-src="building4.jpg" data-cat="building" data-name="Brickwork">
+                            <img src="building4.jpg" alt="Brickwork" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
-                        <div class="svc-photo-thumb" onclick="openLightbox('building',2)" data-src="resident1.jpg" data-cat="building" data-name="Residential Build">
-                            <img src="resident1.jpg" alt="Residential build" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                        <div class="svc-photo-thumb" onclick="openLightbox('building',2)" data-src="building5.jpg" data-cat="building" data-name="Construction">
+                            <img src="building5.jpg" alt="Construction" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
                     </div>
@@ -548,12 +575,24 @@
                             <img src="Showertiles.jpg" alt="Shower tiling" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
-                        <div class="svc-photo-thumb" onclick="openLightbox('tiling',1)" data-src="tiling1.jpg" data-cat="tiling" data-name="Floor Tiling">
-                            <img src="tiling1.jpg" alt="Floor tiling" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                        <div class="svc-photo-thumb" onclick="openLightbox('tiling',1)" data-src="tiling.jpeg" data-cat="tiling" data-name="Floor Tiling">
+                            <img src="tiling.jpeg" alt="Floor tiling" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
-                        <div class="svc-photo-thumb" onclick="openLightbox('tiling',2)" data-src="tiling2.jpg" data-cat="tiling" data-name="Tiling Work">
-                            <img src="tiling2.jpg" alt="Tiling project" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                        <div class="svc-photo-thumb" onclick="openLightbox('tiling',2)" data-src="ptiling3.jpg" data-cat="tiling" data-name="Tiling Work">
+                            <img src="ptiling3.jpg" alt="Tiling project" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('tiling',3)" data-src="tiling4.jpg" data-cat="tiling" data-name="Patio Tiling">
+                            <img src="tiling4.jpg" alt="Patio tiling" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('tiling',4)" data-src="tiling5.jpg" data-cat="tiling" data-name="Wall Tiling">
+                            <img src="tiling5.jpg" alt="Wall tiling" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('tiling',5)" data-src="tiling6.jpg" data-cat="tiling" data-name="Commercial Tiling">
+                            <img src="tiling6.jpg" alt="Commercial tiling" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
                     </div>
@@ -601,15 +640,14 @@
                 <div class="svc-photos">
                     <div class="svc-photos-label">Project Photos</div>
                     <div class="svc-photos-strip">
-                        <div class="svc-photo-thumb" onclick="openLightbox('carpentry',0)" data-src="carpentry1.jpg" data-cat="carpentry" data-name="Carpentry Work">
-                            <img src="carpentry1.jpg" alt="Carpentry project 1" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                        <div class="svc-photo-thumb" onclick="openLightbox('carpentry',0)" data-src="carpentry3.jpg" data-cat="carpentry" data-name="Ceiling Work">
+                            <img src="carpentry3.jpg" alt="Ceiling work" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
-                        <div class="svc-photo-thumb" onclick="openLightbox('carpentry',1)" data-src="carpentry2.jpg" data-cat="carpentry" data-name="Carpentry Work">
-                            <img src="carpentry2.jpg" alt="Carpentry project 2" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                        <div class="svc-photo-thumb" onclick="openLightbox('carpentry',1)" data-src="carpentry4.jpg" data-cat="carpentry" data-name="Built-in Wardrobe">
+                            <img src="carpentry4.jpg" alt="Built-in wardrobe" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
-                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
                     </div>
                 </div>
             </div>
@@ -648,17 +686,6 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Screeding Quote
                 </a>
-                <div class="svc-photos">
-                    <div class="svc-photos-label">Project Photos</div>
-                    <div class="svc-photos-strip">
-                        <div class="svc-photo-thumb" onclick="openLightbox('screeding',0)" data-src="screeding1.jpg" data-cat="screeding" data-name="Floor Screed">
-                            <img src="screeding1.jpg" alt="Floor screeding" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
-                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-                        </div>
-                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
-                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
-                    </div>
-                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
@@ -695,20 +722,6 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Decking Quote
                 </a>
-                <div class="svc-photos">
-                    <div class="svc-photos-label">Project Photos</div>
-                    <div class="svc-photos-strip">
-                        <div class="svc-photo-thumb" onclick="openLightbox('decking',0)" data-src="decking1.jpg" data-cat="decking" data-name="Timber Deck">
-                            <img src="decking1.jpg" alt="Decking project 1" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
-                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-                        </div>
-                        <div class="svc-photo-thumb" onclick="openLightbox('decking',1)" data-src="decking2.jpg" data-cat="decking" data-name="Deck Build">
-                            <img src="decking2.jpg" alt="Decking project 2" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
-                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-                        </div>
-                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
-                    </div>
-                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
@@ -752,11 +765,6 @@
                             <img src="paintedwall.jpg" alt="Painted wall" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
-                        <div class="svc-photo-thumb" onclick="openLightbox('painting',1)" data-src="painting1.jpg" data-cat="painting" data-name="Interior Painting">
-                            <img src="painting1.jpg" alt="Interior painting" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
-                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-                        </div>
-                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
                     </div>
                 </div>
             </div>
@@ -799,17 +807,6 @@
                     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Get a Waterproofing Quote
                 </a>
-                <div class="svc-photos">
-                    <div class="svc-photos-label">Project Photos</div>
-                    <div class="svc-photos-strip">
-                        <div class="svc-photo-thumb" onclick="openLightbox('waterproofing',0)" data-src="waterproofing1.jpg" data-cat="waterproofing" data-name="Waterproofing">
-                            <img src="waterproofing1.jpg" alt="Waterproofing project" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
-                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-                        </div>
-                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
-                        <div class="svc-photo-thumb empty"><span>Photo coming soon</span></div>
-                    </div>
-                </div>
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-placeholder">
@@ -849,16 +846,20 @@
                 <div class="svc-photos">
                     <div class="svc-photos-label">Project Photos</div>
                     <div class="svc-photos-strip">
-                        <div class="svc-photo-thumb" onclick="openLightbox('renovations',0)" data-src="BraaiBuild.jpg" data-cat="renovations" data-name="Braai Build">
-                            <img src="BraaiBuild.jpg" alt="Braai and entertainment area" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                        <div class="svc-photo-thumb" onclick="openLightbox('renovations',0)" data-src="90buildbraai.jpg" data-cat="renovations" data-name="Braai Build">
+                            <img src="90buildbraai.jpg" alt="Braai and entertainment area" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
-                        <div class="svc-photo-thumb" onclick="openLightbox('renovations',1)" data-src="renovation1.jpg" data-cat="renovations" data-name="Renovation Project">
-                            <img src="renovation1.jpg" alt="Renovation project" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                        <div class="svc-photo-thumb" onclick="openLightbox('renovations',1)" data-src="renovation3.jpg" data-cat="renovations" data-name="Bathroom Renovation">
+                            <img src="renovation3.jpg" alt="Bathroom renovation" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
-                        <div class="svc-photo-thumb" onclick="openLightbox('renovations',2)" data-src="renovation2.jpg" data-cat="renovations" data-name="Renovation Project">
-                            <img src="renovation2.jpg" alt="Renovation project 2" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                        <div class="svc-photo-thumb" onclick="openLightbox('renovations',2)" data-src="renovation4.jpg" data-cat="renovations" data-name="Kitchen Upgrade">
+                            <img src="renovation4.jpg" alt="Kitchen upgrade" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
+                            <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+                        </div>
+                        <div class="svc-photo-thumb" onclick="openLightbox('renovations',3)" data-src="renovation5.jpg" data-cat="renovations" data-name="Open-Plan Conversion">
+                            <img src="renovation5.jpg" alt="Open-plan conversion" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.innerHTML='<span>Photo coming soon</span>';this.parentElement.onclick=null;">
                             <div class="thumb-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
                         </div>
                     </div>
@@ -866,7 +867,7 @@
             </div>
             <div class="svc-visual fu d1">
                 <div class="svc-img-wrap">
-                    <img src="BraaiBuild.jpg" alt="Custom braai and outdoor entertainment area build by Izwe 2 Projects West Coast" onerror="this.parentElement.style.display='none';this.parentElement.nextElementSibling.style.display='flex'">
+                    <img src="90buildbraai.jpg" alt="Custom braai and outdoor entertainment area build by Izwe 2 Projects West Coast" onerror="this.parentElement.style.display='none';this.parentElement.nextElementSibling.style.display='flex'">
                     <div class="svc-img-tag">Renovations</div>
                 </div>
                 <div class="svc-placeholder" style="display:none;">
@@ -880,227 +881,163 @@
     </div>
 </section>
 
-<!-- ══ FULL PHOTO GALLERY ══ -->
+<!-- ══ FULL PHOTO GALLERY — enhanced ══ -->
 <section id="gallery" aria-labelledby="gallery-heading">
-    <div class="gallery-hd">
-        <div class="label-tag" style="background:rgba(255,255,255,0.1);color:white;border-color:rgba(255,255,255,0.2);">Our Work</div>
-        <h2 id="gallery-heading">Project <em>Gallery</em></h2>
-        <p>A look at some of the work we've completed across the West Coast</p>
+
+    <!-- Bold intro banner -->
+    <div class="gallery-intro">
+        <div class="container">
+            <div class="gallery-hd fu">
+                <div class="label-tag">Our Work</div>
+                <h2 id="gallery-heading">Project <em>Gallery</em></h2>
+                <p>A look at some of the work we've completed across the West Coast</p>
+            </div>
+            <div class="gallery-stats fu d1">
+                <div class="gallery-stat"><div class="gallery-stat-num">150+</div><div class="gallery-stat-label">Projects Done</div></div>
+                <div class="gallery-stat"><div class="gallery-stat-num">10+</div><div class="gallery-stat-label">Years Active</div></div>
+                <div class="gallery-stat"><div class="gallery-stat-num">5</div><div class="gallery-stat-label">Services Shown</div></div>
+                <div class="gallery-stat"><div class="gallery-stat-num">8</div><div class="gallery-stat-label">Towns Served</div></div>
+            </div>
+        </div>
     </div>
-    <div class="gallery-filters" role="group" aria-label="Filter gallery">
-        <button class="gf-btn active" onclick="filterGallery(this,'all')">All Projects</button>
-        <button class="gf-btn" onclick="filterGallery(this,'building')">Building</button>
-        <button class="gf-btn" onclick="filterGallery(this,'tiling')">Tiling</button>
-        <button class="gf-btn" onclick="filterGallery(this,'carpentry')">Carpentry</button>
-        <button class="gf-btn" onclick="filterGallery(this,'decking')">Decking</button>
-        <button class="gf-btn" onclick="filterGallery(this,'painting')">Painting</button>
-        <button class="gf-btn" onclick="filterGallery(this,'waterproofing')">Waterproofing</button>
-        <button class="gf-btn" onclick="filterGallery(this,'renovations')">Renovations</button>
+
+    <!-- Sticky filter bar — Building, Tiling, Carpentry, Painting, Renovations only -->
+    <div class="gallery-filters-wrap">
+        <div class="gallery-filters" role="group" aria-label="Filter gallery">
+            <button class="gf-btn active" onclick="filterGallery(this,'all')">All Projects</button>
+            <button class="gf-btn" onclick="filterGallery(this,'building')">Building</button>
+            <button class="gf-btn" onclick="filterGallery(this,'tiling')">Tiling</button>
+            <button class="gf-btn" onclick="filterGallery(this,'carpentry')">Carpentry</button>
+            <button class="gf-btn" onclick="filterGallery(this,'painting')">Painting</button>
+            <button class="gf-btn" onclick="filterGallery(this,'renovations')">Renovations</button>
+        </div>
     </div>
-    <div class="container">
-        <div class="masonry-grid" id="masonryGrid">
-            <!-- Building -->
-            <div class="masonry-item fu" data-cat="building" onclick="openGalleryLightbox(this)">
-                <img src="resident1.jpg" alt="Residential build West Coast" style="height:320px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Residential Build</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="building" onclick="openGalleryLightbox(this)">
-                <img src="building1.jpg" alt="Building project 1" style="height:240px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">New Construction</div></div>
-            </div>
-            <div class="masonry-item fu d2" data-cat="building" onclick="openGalleryLightbox(this)">
-                <img src="building2.jpg" alt="Building project 2" style="height:200px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Construction Work</div></div>
-            </div>
-            <!-- Tiling -->
-            <div class="masonry-item fu" data-cat="tiling" onclick="openGalleryLightbox(this)">
-                <img src="Showertiles.jpg" alt="Shower tiling" style="height:280px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Shower Tiling</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="tiling" onclick="openGalleryLightbox(this)">
-                <img src="tiling1.jpg" alt="Floor tiling" style="height:220px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Floor Tiling</div></div>
-            </div>
-            <div class="masonry-item fu d2" data-cat="tiling" onclick="openGalleryLightbox(this)">
-                <img src="tiling2.jpg" alt="Tiling project" style="height:260px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Tiling Project</div></div>
-            </div>
-            <!-- Painting -->
-            <div class="masonry-item fu" data-cat="painting" onclick="openGalleryLightbox(this)">
-                <img src="paintedwall.jpg" alt="Painted wall" style="height:250px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Painting</span><div class="masonry-name">Exterior Painting</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="painting" onclick="openGalleryLightbox(this)">
-                <img src="painting1.jpg" alt="Interior painting" style="height:210px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Painting</span><div class="masonry-name">Interior Painting</div></div>
-            </div>
-            <!-- Renovations -->
-            <div class="masonry-item fu" data-cat="renovations" onclick="openGalleryLightbox(this)">
-                <img src="BraaiBuild.jpg" alt="Braai entertainment area" style="height:300px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Braai Entertainment Area</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="renovations" onclick="openGalleryLightbox(this)">
-                <img src="renovation1.jpg" alt="Renovation project" style="height:230px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Renovation Project</div></div>
-            </div>
-            <div class="masonry-item fu d2" data-cat="renovations" onclick="openGalleryLightbox(this)">
-                <img src="renovation2.jpg" alt="Renovation project 2" style="height:260px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Interior Transformation</div></div>
-            </div>
-            <!-- Carpentry -->
-            <div class="masonry-item fu" data-cat="carpentry" onclick="openGalleryLightbox(this)">
-                <img src="carpentry1.jpg" alt="Carpentry work" style="height:240px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Carpentry</span><div class="masonry-name">Carpentry Work</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="carpentry" onclick="openGalleryLightbox(this)">
-                <img src="carpentry2.jpg" alt="Carpentry project 2" style="height:200px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Carpentry</span><div class="masonry-name">Timber Work</div></div>
-            </div>
-            <!-- Decking -->
-            <div class="masonry-item fu" data-cat="decking" onclick="openGalleryLightbox(this)">
-                <img src="decking1.jpg" alt="Timber decking" style="height:270px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Decking</span><div class="masonry-name">Timber Deck Build</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="decking" onclick="openGalleryLightbox(this)">
-                <img src="decking2.jpg" alt="Deck project" style="height:220px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Decking</span><div class="masonry-name">Outdoor Deck</div></div>
-            </div>
-            <!-- Waterproofing -->
-            <div class="masonry-item fu" data-cat="waterproofing" onclick="openGalleryLightbox(this)">
-                <img src="waterproofing1.jpg" alt="Waterproofing project" style="height:220px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Waterproofing</span><div class="masonry-name">Roof Waterproofing</div></div>
-            </div>
-            <!-- Screeding -->
-            <div class="masonry-item fu d1" data-cat="screeding" onclick="openGalleryLightbox(this)">
-                <img src="screeding1.jpg" alt="Floor screeding" style="height:200px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Screeding</span><div class="masonry-name">Floor Screed</div></div>
-            </div>
-            <!-- General site pics -->
-            <div class="masonry-item fu" data-cat="building" onclick="openGalleryLightbox(this)">
-                <img src="pic1.jpeg" alt="Izwe 2 Projects West Coast construction" style="height:290px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">West Coast Project</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="renovations" onclick="openGalleryLightbox(this)">
-                <img src="pic2.jpeg" alt="Interior finishing" style="height:240px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Interior Finishing</div></div>
-            </div>
-            <div class="masonry-item fu d2" data-cat="tiling" onclick="openGalleryLightbox(this)">
-                <img src="pic3.jpeg" alt="Tiling and plastering" style="height:220px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Tiling &amp; Plastering</div></div>
-            </div>
 
-            <!-- ═══ EXTRA GALLERY SLOTS — drop photos in using filenames below ═══ -->
+    <!-- Masonry grid — no screeding, waterproofing or decking items -->
+    <div class="gallery-grid-wrap">
+        <div class="container">
+            <div class="masonry-grid" id="masonryGrid">
 
-            <!-- Extra Building — name files: building3.jpg, building4.jpg, building5.jpg -->
-            <div class="masonry-item fu" data-cat="building" onclick="openGalleryLightbox(this)">
-                <img src="building3.jpg" alt="Building project 3" style="height:260px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Foundation Work</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="building" onclick="openGalleryLightbox(this)">
-                <img src="building4.jpg" alt="Building project 4" style="height:220px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Block Laying</div></div>
-            </div>
-            <div class="masonry-item fu d2" data-cat="building" onclick="openGalleryLightbox(this)">
-                <img src="building5.jpg" alt="Building project 5" style="height:300px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Extension Build</div></div>
-            </div>
+                <!-- Building -->
+                <div class="masonry-item fu" data-cat="building" onclick="openGalleryLightbox(this)">
+                    <img src="resident1.jpg" alt="Residential build West Coast" style="height:320px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Residential Build</div></div>
+                </div>
+                <div class="masonry-item fu d1" data-cat="building" onclick="openGalleryLightbox(this)">
+                    <img src="building3.jpg" alt="Building project" style="height:250px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">New Construction</div></div>
+                </div>
+                <div class="masonry-item fu d2" data-cat="building" onclick="openGalleryLightbox(this)">
+                    <img src="building4.jpg" alt="Brickwork detail" style="height:210px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Brickwork Detail</div></div>
+                </div>
+                <div class="masonry-item fu" data-cat="building" onclick="openGalleryLightbox(this)">
+                    <img src="building5.jpg" alt="New build" style="height:290px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">New Build</div></div>
+                </div>
+                <div class="masonry-item fu d1" data-cat="building" onclick="openGalleryLightbox(this)">
+                    <img src="pic1.jpeg" alt="Izwe 2 Projects West Coast construction" style="height:270px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">West Coast Project</div></div>
+                </div>
+                <div class="masonry-item fu d2" data-cat="building" onclick="openGalleryLightbox(this)">
+                    <img src="pic4.jpeg" alt="Construction site" style="height:250px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">West Coast Site</div></div>
+                </div>
+                <div class="masonry-item fu" data-cat="building" onclick="openGalleryLightbox(this)">
+                    <img src="pic7.jpeg" alt="Building work" style="height:230px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Construction Work</div></div>
+                </div>
+                <div class="masonry-item fu d1" data-cat="building" onclick="openGalleryLightbox(this)">
+                    <img src="pic8.jpeg" alt="Building project" style="height:260px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Site Progress</div></div>
+                </div>
 
-            <!-- Extra Tiling — name files: tiling3.jpg, tiling4.jpg, tiling5.jpg -->
-            <div class="masonry-item fu" data-cat="tiling" onclick="openGalleryLightbox(this)">
-                <img src="tiling3.jpg" alt="Tiling project 3" style="height:240px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Bathroom Tiles</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="tiling" onclick="openGalleryLightbox(this)">
-                <img src="tiling4.jpg" alt="Tiling project 4" style="height:210px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Kitchen Tiles</div></div>
-            </div>
-            <div class="masonry-item fu d2" data-cat="tiling" onclick="openGalleryLightbox(this)">
-                <img src="tiling5.jpg" alt="Tiling project 5" style="height:270px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Patio Tiling</div></div>
-            </div>
+                <!-- Tiling -->
+                <div class="masonry-item fu" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                    <img src="Showertiles.jpg" alt="Shower tiling" style="height:300px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Shower Tiling</div></div>
+                </div>
+                <div class="masonry-item fu d1" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                    <img src="tiling.jpeg" alt="Floor tiling" style="height:230px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Floor Tiling</div></div>
+                </div>
+                <div class="masonry-item fu d2" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                    <img src="ptiling3.jpg" alt="Tiling project" style="height:260px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Precision Tiling</div></div>
+                </div>
+                <div class="masonry-item fu d1" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                    <img src="tiling4.jpg" alt="Patio tiling" style="height:220px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Patio Tiling</div></div>
+                </div>
+                <div class="masonry-item fu d2" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                    <img src="tiling5.jpg" alt="Wall tiling" style="height:250px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Wall Tiling</div></div>
+                </div>
+                <div class="masonry-item fu" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                    <img src="tiling6.jpg" alt="Commercial tiling" style="height:270px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Commercial Tiling</div></div>
+                </div>
+                <div class="masonry-item fu d1" data-cat="tiling" onclick="openGalleryLightbox(this)">
+                    <img src="pic3.jpeg" alt="Tiling and plastering" style="height:220px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Tiling &amp; Plastering</div></div>
+                </div>
 
-            <!-- Extra Carpentry — name files: carpentry3.jpg, carpentry4.jpg -->
-            <div class="masonry-item fu" data-cat="carpentry" onclick="openGalleryLightbox(this)">
-                <img src="carpentry3.jpg" alt="Carpentry project 3" style="height:250px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Carpentry</span><div class="masonry-name">Built-in Cupboards</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="carpentry" onclick="openGalleryLightbox(this)">
-                <img src="carpentry4.jpg" alt="Carpentry project 4" style="height:220px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Carpentry</span><div class="masonry-name">Door Frames</div></div>
-            </div>
+                <!-- Carpentry -->
+                <div class="masonry-item fu" data-cat="carpentry" onclick="openGalleryLightbox(this)">
+                    <img src="carpentry3.jpg" alt="Ceiling work" style="height:250px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Carpentry</span><div class="masonry-name">Ceiling Work</div></div>
+                </div>
+                <div class="masonry-item fu d1" data-cat="carpentry" onclick="openGalleryLightbox(this)">
+                    <img src="carpentry4.jpg" alt="Built-in wardrobe" style="height:210px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Carpentry</span><div class="masonry-name">Built-in Wardrobe</div></div>
+                </div>
 
-            <!-- Extra Decking — name files: decking3.jpg, decking4.jpg -->
-            <div class="masonry-item fu" data-cat="decking" onclick="openGalleryLightbox(this)">
-                <img src="decking3.jpg" alt="Decking project 3" style="height:260px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Decking</span><div class="masonry-name">Entertainment Deck</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="decking" onclick="openGalleryLightbox(this)">
-                <img src="decking4.jpg" alt="Decking project 4" style="height:230px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Decking</span><div class="masonry-name">Pool Deck</div></div>
-            </div>
+                <!-- Painting -->
+                <div class="masonry-item fu" data-cat="painting" onclick="openGalleryLightbox(this)">
+                    <img src="paintedwall.jpg" alt="Painted wall" style="height:260px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Painting</span><div class="masonry-name">Exterior Painting</div></div>
+                </div>
+                <div class="masonry-item fu d1" data-cat="painting" onclick="openGalleryLightbox(this)">
+                    <img src="pic9.jpeg" alt="Interior painting" style="height:220px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Painting</span><div class="masonry-name">Interior Coat</div></div>
+                </div>
+                <div class="masonry-item fu d2" data-cat="painting" onclick="openGalleryLightbox(this)">
+                    <img src="pic10.jpeg" alt="Painting project" style="height:240px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Painting</span><div class="masonry-name">Painting Project</div></div>
+                </div>
 
-            <!-- Extra Painting — name files: painting2.jpg, painting3.jpg -->
-            <div class="masonry-item fu" data-cat="painting" onclick="openGalleryLightbox(this)">
-                <img src="painting2.jpg" alt="Painting project 2" style="height:240px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Painting</span><div class="masonry-name">Exterior Coat</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="painting" onclick="openGalleryLightbox(this)">
-                <img src="painting3.jpg" alt="Painting project 3" style="height:200px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Painting</span><div class="masonry-name">Feature Wall</div></div>
-            </div>
+                <!-- Renovations -->
+                <div class="masonry-item fu" data-cat="renovations" onclick="openGalleryLightbox(this)">
+                    <img src="90buildbraai.jpg" alt="Braai entertainment area" style="height:310px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Braai Entertainment Area</div></div>
+                </div>
+                <div class="masonry-item fu d1" data-cat="renovations" onclick="openGalleryLightbox(this)">
+                    <img src="renovation3.jpg" alt="Bathroom renovation" style="height:250px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Bathroom Renovation</div></div>
+                </div>
+                <div class="masonry-item fu d2" data-cat="renovations" onclick="openGalleryLightbox(this)">
+                    <img src="renovation4.jpg" alt="Kitchen upgrade" style="height:230px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Kitchen Upgrade</div></div>
+                </div>
+                <div class="masonry-item fu" data-cat="renovations" onclick="openGalleryLightbox(this)">
+                    <img src="renovation5.jpg" alt="Open-plan conversion" style="height:260px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Open-Plan Conversion</div></div>
+                </div>
+                <div class="masonry-item fu d1" data-cat="renovations" onclick="openGalleryLightbox(this)">
+                    <img src="pic2.jpeg" alt="Interior finishing" style="height:240px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Interior Finishing</div></div>
+                </div>
+                <div class="masonry-item fu d2" data-cat="renovations" onclick="openGalleryLightbox(this)">
+                    <img src="pic5.jpeg" alt="Project detail" style="height:220px;" onerror="this.style.display='none'">
+                    <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Project Detail</div></div>
+                </div>
 
-            <!-- Extra Waterproofing — name files: waterproofing2.jpg, waterproofing3.jpg -->
-            <div class="masonry-item fu" data-cat="waterproofing" onclick="openGalleryLightbox(this)">
-                <img src="waterproofing2.jpg" alt="Waterproofing project 2" style="height:230px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Waterproofing</span><div class="masonry-name">Balcony Seal</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="waterproofing" onclick="openGalleryLightbox(this)">
-                <img src="waterproofing3.jpg" alt="Waterproofing project 3" style="height:210px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Waterproofing</span><div class="masonry-name">Flat Roof Treatment</div></div>
-            </div>
-
-            <!-- Extra Screeding — name files: screeding2.jpg, screeding3.jpg -->
-            <div class="masonry-item fu" data-cat="screeding" onclick="openGalleryLightbox(this)">
-                <img src="screeding2.jpg" alt="Screeding project 2" style="height:220px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Screeding</span><div class="masonry-name">Commercial Screed</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="screeding" onclick="openGalleryLightbox(this)">
-                <img src="screeding3.jpg" alt="Screeding project 3" style="height:190px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Screeding</span><div class="masonry-name">Garage Floor Screed</div></div>
-            </div>
-
-            <!-- Extra Renovations — name files: renovation3.jpg, renovation4.jpg, renovation5.jpg -->
-            <div class="masonry-item fu" data-cat="renovations" onclick="openGalleryLightbox(this)">
-                <img src="renovation3.jpg" alt="Renovation project 3" style="height:280px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Kitchen Makeover</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="renovations" onclick="openGalleryLightbox(this)">
-                <img src="renovation4.jpg" alt="Renovation project 4" style="height:240px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Bathroom Upgrade</div></div>
-            </div>
-            <div class="masonry-item fu d2" data-cat="renovations" onclick="openGalleryLightbox(this)">
-                <img src="renovation5.jpg" alt="Renovation project 5" style="height:210px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Open-Plan Conversion</div></div>
-            </div>
-
-            <!-- Extra general — name files: pic4.jpeg, pic5.jpeg, pic6.jpeg -->
-            <div class="masonry-item fu" data-cat="building" onclick="openGalleryLightbox(this)">
-                <img src="pic4.jpeg" alt="Izwe 2 Projects site work" style="height:250px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Building</span><div class="masonry-name">Site Work</div></div>
-            </div>
-            <div class="masonry-item fu d1" data-cat="renovations" onclick="openGalleryLightbox(this)">
-                <img src="pic5.jpeg" alt="Project finishing" style="height:230px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Renovations</span><div class="masonry-name">Project Finishing</div></div>
-            </div>
-            <div class="masonry-item fu d2" data-cat="tiling" onclick="openGalleryLightbox(this)">
-                <img src="pic6.jpeg" alt="Precision tiling" style="height:200px;" onerror="this.style.display='none'">
-                <div class="masonry-overlay"><span class="masonry-tag">Tiling</span><div class="masonry-name">Precision Tiling</div></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ══ LIGHTBOX ══ -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="closeLightboxOnBg(event)">
     <div class="lb-inner">
         <button class="lb-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
@@ -1190,7 +1127,6 @@
                     <p style="font-size:13.5px;line-height:2;color:rgba(255,255,255,0.45);">
                         <a href="tel:+27766714106" style="color:rgba(255,255,255,0.45);text-decoration:none;">076 671 4106</a><br>
                         <a href="tel:+27748847688" style="color:rgba(255,255,255,0.45);text-decoration:none;">074 884 7688</a><br>
-                        <a href="mailto:aggustine828@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:none;">aggustine828@gmail.com</a><br>
                         Vredenburg, West Coast
                     </p>
                 </div>
@@ -1224,11 +1160,7 @@
         document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         document.querySelectorAll('.masonry-item').forEach(item => {
-            if (cat === 'all' || item.dataset.cat === cat) {
-                item.style.display = '';
-            } else {
-                item.style.display = 'none';
-            }
+            item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
         });
     }
 
@@ -1236,12 +1168,9 @@
     let lbItems = [];
     let lbIndex = 0;
 
-    // Open from gallery masonry grid
     function openGalleryLightbox(el) {
         const img = el.querySelector('img');
         if (!img || img.style.display === 'none') return;
-
-        // Collect all visible masonry items
         lbItems = Array.from(document.querySelectorAll('.masonry-item')).filter(i => {
             const im = i.querySelector('img');
             return im && im.style.display !== 'none' && i.style.display !== 'none';
@@ -1250,7 +1179,6 @@
         showLightboxItem(lbIndex);
     }
 
-    // Open from service strip thumbnails
     function openLightbox(cat, idx) {
         lbItems = Array.from(document.querySelectorAll('.masonry-item')).filter(i => {
             const im = i.querySelector('img');
@@ -1267,7 +1195,6 @@
         const img = el.querySelector('img');
         const name = el.querySelector('.masonry-name')?.textContent || '';
         const tag  = el.querySelector('.masonry-tag')?.textContent || '';
-
         document.getElementById('lbImg').src = img.src;
         document.getElementById('lbImg').alt = img.alt;
         document.getElementById('lbName').textContent = name;
@@ -1291,12 +1218,11 @@
         showLightboxItem(lbIndex);
     }
 
-    // Keyboard navigation
     document.addEventListener('keydown', e => {
         if (!document.getElementById('lightbox').classList.contains('open')) return;
-        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navigateLightbox(-1);
         if (e.key === 'ArrowRight') navigateLightbox(1);
-        if (e.key === 'ArrowLeft')  navigateLightbox(-1);
+        if (e.key === 'Escape') closeLightbox();
     });
 </script>
 </body>
